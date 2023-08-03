@@ -30,7 +30,10 @@ Chat-Base is an open-source AI chatbot that uses [TypeChat](https://github.com/m
 
 
 
-https://github.com/ConnectAI-E/Chat-Base/assets/50035229/5035aa82-a784-41ab-9031-1c7b1140bf4a
+
+
+https://github.com/ConnectAI-E/Chat-Base/assets/50035229/22d70717-451c-4551-89a1-5d9501161ab0
+
 
 
 
