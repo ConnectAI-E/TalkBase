@@ -4,7 +4,7 @@
 </a>
 
 <p align="center">
-  Enter data into lark-base tables in a chat way，power by TypeChat.
+  write data into lark-base tables in a chat way，power by TypeChat.
 </p>
 
 <p align="center">
