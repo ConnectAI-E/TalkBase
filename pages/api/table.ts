@@ -12,15 +12,17 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse,
 ) {
-    // console.log(req.body);
     const { input, schema, table } = JSON.parse(req.body) as Prop;
+    console.log(schema);
+    console.log(table);
     const translator = createJsonTranslator(model, schema, table);
     const response = await translator.translate(input);
+    console.log(response);
     if (!response.success) {
         console.log(response.message);
         return;
     }
-    res.status(200).send({ ...response.data });
+    res.status(200).send({ res: response.data });
 }
 
 

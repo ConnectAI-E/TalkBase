@@ -41,6 +41,7 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
     "prettier": "^2.8.8",
-    "prettier-plugin-tailwindcss": "^0.3.0"
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "vitest": "^0.34.1"
   }
 }

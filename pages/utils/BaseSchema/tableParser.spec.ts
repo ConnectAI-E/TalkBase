@@ -62,7 +62,7 @@ describe('BaseSchema class format', () => {
 
     it('should format field', function () {
         expect(core.formatField(tableInfo.fields[0])).toBe('content: string;');
-        expect(core.formatField(tableInfo.fields[1])).toBe(`sentiment: "negative" | "neutral" | "positive"`);
+        expect(core.formatField(tableInfo.fields[1])).toBe(`sentiment: "negative" | "neutral" | "positive";`);
     });
 
     it('should format title', function () {
@@ -76,7 +76,7 @@ describe('BaseSchema class format', () => {
     it('should format all', function () {
         expect(core.typeStr).toBe(`export interface SentimentResponse {
 content: string;
-sentiment: "negative" | "neutral" | "positive"
+sentiment: "negative" | "neutral" | "positive";
 }`);
     });
 });

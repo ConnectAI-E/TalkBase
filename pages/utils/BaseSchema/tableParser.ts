@@ -30,7 +30,7 @@ export class TableParser {
             return '';
         }
         const optionsStr = options.map((o: any) => `"${o.name}"`).join(' | ');
-        return `${field.name}: ${optionsStr}`;
+        return `${field.name}: ${optionsStr};`;
     }
     formatField(field: IBaseFieldMeta) {
         switch (field.type) {
