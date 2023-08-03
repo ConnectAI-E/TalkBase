@@ -1,26 +1,64 @@
-"use client";
-
-import { useRef } from "react";
+import {useEffect, useRef} from 'react';
 import { useChat } from "ai/react";
 import va from "@vercel/analytics";
 import clsx from "clsx";
-import { VercelIcon, GithubIcon, LoadingCircle, SendIcon } from "./icons";
+import { GithubIcon, LoadingCircle, SendIcon } from "./icons";
 import { Bot, User } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Textarea from "react-textarea-autosize";
 import { toast } from "sonner";
+import {githubUrl} from '../constant';
+import {bitable} from '@base-open/web-api';
+import {TableParser} from '../utils/BaseSchema/tableParser';
+import {DataWriter} from '../utils/BaseSchema/dataWriter';
 
 const examples = [
-  "What is 999 + 222?",
-  "Zach has 4 trucks each of which is loaded with 48 oranges. How many oranges in total does Zach have?",
-  "What is the area of a circle with radius 4?",
+ "今天天气不错哦"
 ];
 
 export default function Chat() {
   const formRef = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
+  useEffect(() => {
+    Promise.all([bitable.base.getTableMetaList(), bitable.base.getSelection()])
+        .then(async ([metaList, selection]) => {
+          // console.log('metaList',metaList)
+          // 获取当前选中的表格
+          const currentTableMeta = metaList.find(({ id }) => id === selection.tableId) as any;
+          const currentTable = await bitable.base.getTableById(currentTableMeta?.id);
+          // 当前表的名称
+          const currentTableName = currentTableMeta?.name;
+          // 获取当前表的所有字段
+          const fields = await currentTable.getFieldMetaList();
+          console.log('fields', fields);
+          const tableInfo = {
+            name: currentTableName,
+            fields: fields,
+          };
+          const _baseTable = new TableParser(tableInfo);
+          console.log(_baseTable.typeStr);
+          // request qpi hello
+          const response = await fetch('/api/table', {
+            method: 'POST',
+            body: JSON.stringify(
+                {
+                  input: '感觉不错',
+                  schema: _baseTable.typeStr,
+                  table: currentTableName,
+                },
+            ),
+          });
+          const _json = await response.json();
+          console.log(_json);
+
+          const record = new DataWriter(tableInfo)
+          await currentTable.addRecord({
+            fields: record.load(_json).recordFormat
+          });
+        });
+  }, []);
   const { messages, input, setInput, handleSubmit, isLoading } = useChat({
     onResponse: (response) => {
       if (response.status === 429) {
@@ -42,17 +80,10 @@ export default function Chat() {
   const disabled = isLoading || input.length === 0;
 
   return (
-    <main className="flex flex-col items-center justify-between pb-40">
-      <div className="absolute top-5 hidden w-full justify-between px-5 sm:flex">
+    <main className="flex flex-col items-center justify-between ">
+      <div className="absolute top-5 hidden w-full justify-end px-5 sm:flex">
         <a
-          href="/deploy"
-          target="_blank"
-          className="rounded-lg p-2 transition-colors duration-200 hover:bg-stone-100 sm:bottom-auto"
-        >
-          <VercelIcon />
-        </a>
-        <a
-          href="/github"
+          href={githubUrl}
           target="_blank"
           className="rounded-lg p-2 transition-colors duration-200 hover:bg-stone-100 sm:bottom-auto"
         >
@@ -97,15 +128,15 @@ export default function Chat() {
           </div>
         ))
       ) : (
-        <div className="border-gray-200sm:mx-0 mx-5 mt-20 max-w-screen-md rounded-md border sm:w-full">
-          <div className="flex flex-col space-y-4 p-7 sm:p-10">
+        <div className="mx-2 mt-2 max-w-screen-md rounded-md  w-80%">
+          <div className="flex flex-col space-y-4 p-7 border sm:p-10  px-10">
             <h1 className="text-lg font-semibold text-black">
-              Welcome to ChatCalc!
+              Welcome to ChatBase!
             </h1>
             <p className="text-gray-500">
               This is an{" "}
               <a
-                href="https://github.com/ConnectAI-E/Chat-Calculator"
+                href={githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-medium underline underline-offset-4 transition-colors hover:text-black"
@@ -114,12 +145,12 @@ export default function Chat() {
               </a>{" "}
               AI chatbot that uses{" "}
               <a
-                href="https://js.langchain.com/docs/modules/agents/"
+                href="https://github.com/microsoft/TypeChat"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-medium underline underline-offset-4 transition-colors hover:text-black"
               >
-                LangChainJS
+                TypeChat
               </a>{" "}
               and{" "}
               <a
@@ -128,10 +159,11 @@ export default function Chat() {
                 rel="noopener noreferrer"
                 className="font-medium underline underline-offset-4 transition-colors hover:text-black"
               >
-                Vercel AI SDK
+                Vercel
               </a>{" "}
-              to calculate
-              with natural language.
+              to write date to lark-base by natural language.
+              <br />
+                <br />
               Project is made by {" "}
               <a
                 href="https://github.com/ConnectAI-E"
@@ -171,7 +203,7 @@ export default function Chat() {
             required
             rows={1}
             autoFocus
-            placeholder="Send a message"
+            placeholder="Type something write to record.. "
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => {
