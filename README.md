@@ -32,9 +32,8 @@
 Chat-Base is an open-source AI chatbot that uses [TypeChat](https://github.com/microsoft/TypeChat) and the [Vercel AI SDK](https://sdk.vercel.ai/docs) to interact with natural language.
 
 
+![chatbasegif](https://github.com/ConnectAI-E/Chat-Base/assets/110169811/3f69a25a-f66b-450a-a478-1986debd37b3)
 
-
-https://github.com/ConnectAI-E/Chat-Base/assets/50035229/a7993805-bb58-4acb-bbb8-844f4ad25ea6
 
 
 ## Quick Start
