@@ -8,7 +8,6 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/ConnectAI-E"><img src="https://img.shields.io/badge/ConnectAI%20-96-%c" alt="ConnectAI"></a>
   <a href="https://github.com/connectai-e/Chat-Calculator/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/connectai-e/Chat-Calculator?label=license&logo=github&color=f80&logoColor=fff" alt="License" />
   </a>
@@ -28,6 +27,14 @@
 ## Introduction
 
 Chat-Base is an open-source AI chatbot that uses [TypeChat](https://github.com/microsoft/TypeChat) and the [Vercel AI SDK](https://sdk.vercel.ai/docs) to interact with natural language.
+
+
+
+
+https://github.com/ConnectAI-E/Chat-Base/assets/50035229/a7993805-bb58-4acb-bbb8-844f4ad25ea6
+
+
+
 
 
 
