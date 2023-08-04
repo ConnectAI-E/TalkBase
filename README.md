@@ -62,7 +62,8 @@ pnpm dev
 
 ## Deploy your own
 
-You can deploy your own version of Chat-Base with 1-click:
+You can deploy your own version of Chat-Base with one-click:
+
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ConnectAI-E/Chat-Base&env=OPENAI_API_KEY&project-name=chat-calc&repository-name=Chat-Base)
 </details>
 
