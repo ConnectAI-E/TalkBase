@@ -1,5 +1,5 @@
 {
-  "name": "chat-calculator",
+  "name": "chat-base",
   "version": "0.1.0",
   "private": true,
   "scripts": {

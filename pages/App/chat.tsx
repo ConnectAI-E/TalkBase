@@ -8,7 +8,8 @@ import {bitable} from '@base-open/web-api';
 import {TableParser} from '../utils/BaseSchema/tableParser';
 
 const examples = [
-    '今天天气不错哦',
+    '赵先生 148722376662 湖北省黄冈市王家庄21号',
+    '李先生 13995987766 湖北省武汉市刘家庄21号',
 ];
 
 const writeData = async (input: string, tableSchema: string, setTableInfoNow: string) => {
@@ -200,12 +201,12 @@ export default function Chat() {
                 <p className="text-center text-xs text-gray-400">
                     Built with{ ' ' }
                     <a
-                        href="https://js.langchain.com/docs/modules/agents/"
+                        href="https://github.com/microsoft/TypeChat"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="transition-colors hover:text-black"
                     >
-                        Langchain Js
+                        TypeChat
                     </a>{ ' ' }
                     and{ ' ' }
                     <a
