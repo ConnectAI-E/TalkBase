@@ -8,6 +8,9 @@
 </p>
 
 <p align="center">
+    <a href="https://github.com/connectai-e/awesome-basescript">
+    <img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="License" />
+  </a>
   <a href="https://github.com/connectai-e/Chat-Calculator/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/connectai-e/Chat-Calculator?label=license&logo=github&color=f80&logoColor=fff" alt="License" />
   </a>
