@@ -66,9 +66,10 @@ git clone https://github.com/ConnectAI-E/BaseScript-LinkPreview
 pnpm install
 pnpm dev
 ```
-2️⃣ copy http://localhost:5173/ to  [lark-base](https://fork-way.feishu.cn/base/W952bI1soaO1oEs8Oe6cADGznod?table=tblm6dhupyoxRSWD&view=vewbuL0kZc): webview plugin address
-
-
+2️⃣ copy chat-base dev link to the extension script address
+```
+http://localhost:5173/
+```
 
 ## Deploy your own
 
