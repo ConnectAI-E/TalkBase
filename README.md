@@ -38,19 +38,33 @@ https://github.com/ConnectAI-E/Chat-Base/assets/50035229/a7993805-bb58-4acb-bbb8
 
 
 
-## Deploy your own
-
-You can deploy your own version of Chat-Base with 1-click:
 
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ConnectAI-E/Chat-Base&env=OPENAI_API_KEY&project-name=chat-calc&repository-name=Chat-Base)
-</details>
-
-## Setting Up Locally
+## Getting Started
 
 To set up chatBase locally, you'll need to clone the repository and set up the following environment variables:
 
 - `OPENAI_API_KEY` – your OpenAI API key (you can get one [here](https://platform.openai.com/account/api-keys))
+
+
+1️⃣ clone deme
+```
+git clone https://github.com/ConnectAI-E/BaseScript-LinkPreview
+pnpm install
+pnpm dev
+```
+2️⃣ copy http://localhost:5173/ to  [lark-base](https://fork-way.feishu.cn/base/W952bI1soaO1oEs8Oe6cADGznod?table=tblm6dhupyoxRSWD&view=vewbuL0kZc): webview plugin address
+
+
+
+## Deploy your own
+
+You can deploy your own version of Chat-Base with 1-click:
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ConnectAI-E/Chat-Base&env=OPENAI_API_KEY&project-name=chat-calc&repository-name=Chat-Base)
+</details>
+
+
+
 
 ## Tech Stack
 
