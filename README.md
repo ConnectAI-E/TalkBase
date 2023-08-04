@@ -37,13 +37,23 @@ Chat-Base is an open-source AI chatbot that uses [TypeChat](https://github.com/m
 https://github.com/ConnectAI-E/Chat-Base/assets/50035229/a7993805-bb58-4acb-bbb8-844f4ad25ea6
 
 
+## Quick Start
+
+1️⃣  open the grayscale qualification
+
+https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=c55n4142-fce8-4792-b851-f92c9c7d8300
+  
+2️⃣  copy chat-base online link to the extension script address 
+```
+https://chatbase.connectai.site/
+```
+3️⃣ start to chat-base ~
 
 
 
 
 
-
-## Getting Started
+## Dev Local
 
 To set up chatBase locally, you'll need to clone the repository and set up the following environment variables:
 
