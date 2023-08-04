@@ -11,7 +11,7 @@
     "format": "prettier \"**/*.{css,js,json,jsx,ts,tsx}\""
   },
   "dependencies": {
-    "@base-open/web-api": "https://lf3-static.bytednsdoc.com/obj/eden-cn/nuptlgbpx/@base-open/web-api/base-open-web-api-0.1.6-alpha.9.tgz",
+    "@base-open/web-api": "https://lf3-static.bytednsdoc.com/obj/eden-cn/jjjpceh7nulojvhj/base-open-web-api-0.2.0-alpha.11.tgz",
     "@types/node": "20.3.1",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",

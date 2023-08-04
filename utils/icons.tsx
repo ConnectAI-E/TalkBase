@@ -1,3 +1,5 @@
+import exp from 'constants';
+
 export const VercelIcon = () => {
   return (
     <svg
@@ -62,3 +64,5 @@ export const SendIcon = ({ className }: { className?: string }) => {
     </svg>
   );
 };
+
+export default {}

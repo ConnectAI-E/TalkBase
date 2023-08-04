@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@base-open/web-api':
-    specifier: https://lf3-static.bytednsdoc.com/obj/eden-cn/nuptlgbpx/@base-open/web-api/base-open-web-api-0.1.6-alpha.9.tgz
-    version: '@lf3-static.bytednsdoc.com/obj/eden-cn/nuptlgbpx/@base-open/web-api/base-open-web-api-0.1.6-alpha.9.tgz'
+    specifier: https://lf3-static.bytednsdoc.com/obj/eden-cn/jjjpceh7nulojvhj/base-open-web-api-0.2.0-alpha.11.tgz
+    version: '@lf3-static.bytednsdoc.com/obj/eden-cn/jjjpceh7nulojvhj/base-open-web-api-0.2.0-alpha.11.tgz'
   '@types/node':
     specifier: 20.3.1
     version: 20.3.1
@@ -3450,8 +3450,8 @@ packages:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: false
 
-  '@lf3-static.bytednsdoc.com/obj/eden-cn/nuptlgbpx/@base-open/web-api/base-open-web-api-0.1.6-alpha.9.tgz':
-    resolution: {tarball: https://lf3-static.bytednsdoc.com/obj/eden-cn/nuptlgbpx/@base-open/web-api/base-open-web-api-0.1.6-alpha.9.tgz}
+  '@lf3-static.bytednsdoc.com/obj/eden-cn/jjjpceh7nulojvhj/base-open-web-api-0.2.0-alpha.11.tgz':
+    resolution: {tarball: https://lf3-static.bytednsdoc.com/obj/eden-cn/jjjpceh7nulojvhj/base-open-web-api-0.2.0-alpha.11.tgz}
     name: '@base-open/web-api'
-    version: 0.1.6-alpha.9
+    version: 0.2.0-alpha.11
     dev: false

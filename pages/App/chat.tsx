@@ -1,11 +1,11 @@
 import {useEffect, useRef, useState} from 'react';
 import clsx from 'clsx';
-import {GithubIcon, LoadingCircle, SendIcon} from './icons';
+import {GithubIcon, LoadingCircle, SendIcon} from '../../utils/icons';
 import Textarea from 'react-textarea-autosize';
-import {githubUrl} from '../constant';
-import {DataWriter} from '../utils/BaseSchema/dataWriter';
+import {githubUrl} from '../../constant';
+import {DataWriter} from '../../utils/BaseSchema/dataWriter';
 import {bitable} from '@base-open/web-api';
-import {TableParser} from '../utils/BaseSchema/tableParser';
+import {TableParser} from '../../utils/BaseSchema/tableParser';
 
 const examples = [
     '赵先生 148722376662 湖北省黄冈市王家庄21号',
@@ -30,16 +30,24 @@ const writeData = async (input: string, tableSchema: string, setTableInfoNow: st
 export default function Chat() {
     const formRef = useRef<HTMLFormElement>(null);
     const inputRef = useRef<HTMLTextAreaElement>(null);
-
+    const [bitable, setBitable] = useState<any>();
+    useEffect(() => {
+        import('@base-open/web-api').then(res => {
+            setBitable(res.bitable);
+        })
+    }, []);
     const [tableInfoNow, setTableInfoNow] = useState<any>({});
     const [tableSchema, setTableSchema] = useState<any>('');
     const [currentTable, setCurrentTable] = useState<any>({});
     useEffect(() => {
+        if (!bitable) {
+            return;
+        }
         Promise.all([bitable.base.getTableMetaList(), bitable.base.getSelection()])
             .then(async ([metaList, selection]) => {
                 // console.log('metaList',metaList)
                 // 获取当前选中的表格
-                const currentTableMeta = metaList.find(({ id }) => id === selection.tableId) as any;
+                const currentTableMeta = metaList.find(({ id }:{id:any}) => id === selection.tableId) as any;
                 const currentTable = await bitable.base.getTableById(currentTableMeta?.id);
                 setCurrentTable(currentTable);
                 // 获取当前表的所有字段
@@ -54,7 +62,7 @@ export default function Chat() {
                 console.log(_baseTable.typeStr);
                 setTableSchema(_baseTable.typeStr);
             });
-    }, []);
+    }, [bitable]);
 
 
     const [input, setInput] = useState('');
