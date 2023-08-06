@@ -28,7 +28,7 @@ const writeData = async (input: string, tableSchema: string, setTableInfoNow: st
     return _json.res;
 };
 
-const guessTable = async (tableTypie: string) => {
+const guessTable = async (tableType: string) => {
     const response = await fetch('/api/guess', {
         method: 'POST',
         body: JSON.stringify(

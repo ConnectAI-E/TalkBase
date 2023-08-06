@@ -21,7 +21,7 @@ const getTableDescription = async (tsString: string) => {
         messages: [
             {role:"system", content: "根据下面的类型文件结构，判断出此表格的作用，只说结论，不超过20字",},
             {role: "user", content: tsString,}],
-    });
+    }) as any;
     return chatCompletion.data.choices[0].message.content;
 
 }
