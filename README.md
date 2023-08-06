@@ -32,18 +32,27 @@
 Chat-Base is an open-source AI chatbot that uses [TypeChat](https://github.com/microsoft/TypeChat) and the [Vercel AI SDK](https://sdk.vercel.ai/docs) to interact with natural language.
 
 
-
-
-https://github.com/ConnectAI-E/Chat-Base/assets/50035229/a7993805-bb58-4acb-bbb8-844f4ad25ea6
-
+![chatbasegif](https://github.com/ConnectAI-E/Chat-Base/assets/110169811/3f69a25a-f66b-450a-a478-1986debd37b3)
 
 
 
+## Quick Start
+
+1️⃣  open the grayscale qualification
+
+https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=c55n4142-fce8-4792-b851-f92c9c7d8300
+  
+2️⃣  copy chat-base online link to the extension script address 
+```
+https://chatbase.connectai.site/
+```
+3️⃣ start to chat-base ~
 
 
 
 
-## Getting Started
+
+## Dev Local
 
 To set up chatBase locally, you'll need to clone the repository and set up the following environment variables:
 
@@ -56,9 +65,10 @@ git clone https://github.com/ConnectAI-E/BaseScript-LinkPreview
 pnpm install
 pnpm dev
 ```
-2️⃣ copy http://localhost:5173/ to  [lark-base](https://fork-way.feishu.cn/base/W952bI1soaO1oEs8Oe6cADGznod?table=tblm6dhupyoxRSWD&view=vewbuL0kZc): webview plugin address
-
-
+2️⃣ copy chat-base dev link to the extension script address
+```
+http://localhost:5173/
+```
 
 ## Deploy your own
 
