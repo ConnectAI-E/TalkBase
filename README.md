@@ -1,11 +1,9 @@
-<a href="https://Chat-Calc.vercel.app">
-
-  <h1 align="center">ThatBase</h1>
+<a href="https://chatbase.connectai.site/">
+  <img width="100%" alt="image" src="https://github.com/ConnectAI-E/TalkBase/assets/50035229/6edf828f-ff44-41b5-b3f4-4e520d3e6432">
 </a>
+<br/>
+<br/>
 
-<p align="center">
-  write data into lark-base tables in a chat way，power by TypeChat.
-</p>
 
 <p align="center">
     <a href="https://github.com/connectai-e/awesome-basescript">
@@ -17,10 +15,11 @@
   <a href="https://github.com/connectai-e/Chat-Calculator"><img src="https://img.shields.io/github/stars/connectai-e/Chat-Calculator?style=social" alt="Chat-Calc's GitHub repo"></a>
 </p>
 
+
 <p align="center">
   <a href="#introduction"><strong>Introduction</strong></a> ·
   <a href="#deploy-your-own"><strong>Deploy Your Own</strong></a> ·
-  <a href="#setting-up-locally"><strong>Setting Up Locally</strong></a> ·
+  <a href="#quick-start"><strong>Setting Up Locally</strong></a> ·
   <a href="#tech-stack"><strong>Tech Stack</strong></a> ·
   <a href="#contributing"><strong>Contributing</strong></a> ·
   <a href="#license"><strong>License</strong></a>
