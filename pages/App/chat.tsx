@@ -54,7 +54,8 @@ export default function Chat() {
     const [tableSchema, setTableSchema] = useState<any>('');
     const [currentTable, setCurrentTable] = useState<any>({});
 
-    const [tableDescription, setTableDescription] = useState<any>('正在加载表格用途...');
+    const defaultDescription = '正在加载表格用途...';
+    const [tableDescription, setTableDescription] = useState<any>(defaultDescription);
     useEffect(() => {
         if (!bitable) {
             return;
@@ -62,6 +63,7 @@ export default function Chat() {
         let totalTable: any = [];
 
         const updateTableInfo = async (tableId: any, totalTable: []) => {
+            setTableDescription(defaultDescription);
             const currentTableMeta = totalTable.find(({ id }: { id: any }) => id === tableId) as any;
             const currentTable = await bitable.base.getTableById(currentTableMeta?.id);
             setCurrentTable(currentTable);
