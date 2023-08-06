@@ -7,10 +7,7 @@ import {DataWriter} from '../../utils/BaseSchema/dataWriter';
 import {TableParser} from '../../utils/BaseSchema/tableParser';
 import {toast} from 'sonner';
 
-const examples = [
-    '赵先生 148722376662 湖北省黄冈市王家庄21号',
-    '李先生 13995987766 湖北省武汉市刘家庄21号',
-];
+
 
 const writeData = async (input: string, tableSchema: string, setTableInfoNow: string) => {
     const response = await fetch('/api/table', {
@@ -24,10 +21,14 @@ const writeData = async (input: string, tableSchema: string, setTableInfoNow: st
         ),
     });
     const _json = await response.json();
+    if (_json.error) {
+        toast.error("内容解析失败");
+        throw new Error(_json.error);
+    }
     return _json.res;
 };
 
-const guessTable = async (tableType: string) => {
+const guessTable = async (tableTypie: string) => {
     const response = await fetch('/api/guess', {
         method: 'POST',
         body: JSON.stringify(
