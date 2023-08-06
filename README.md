@@ -28,7 +28,7 @@
 
 ## Introduction
 
-Chat-Base is an open-source AI chatbot that uses [TypeChat](https://github.com/microsoft/TypeChat) and the [Vercel AI SDK](https://sdk.vercel.ai/docs) to interact with natural language.
+TalkBase is an open-source AI chatbot that uses [TypeChat](https://github.com/microsoft/TypeChat) and the [Vercel AI SDK](https://sdk.vercel.ai/docs) to interact with natural language.
 
 
 ![chatbasegif](https://github.com/ConnectAI-E/Chat-Base/assets/110169811/3f69a25a-f66b-450a-a478-1986debd37b3)
@@ -37,11 +37,11 @@ Chat-Base is an open-source AI chatbot that uses [TypeChat](https://github.com/m
 
 ## Quick Start
 
-1️⃣  open the grayscale qualification
+1️⃣  open the grayscale qualification for base extension
 
 https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=c55n4142-fce8-4792-b851-f92c9c7d8300
   
-2️⃣  copy chat-base online link to the extension script address 
+2️⃣  copy talk-base online link to the extension script address 
 ```
 https://chatbase.connectai.site/
 ```
@@ -53,7 +53,7 @@ https://chatbase.connectai.site/
 
 ## Dev Local
 
-To set up chatBase locally, you'll need to clone the repository and set up the following environment variables:
+To set up talkBase locally, you'll need to clone the repository and set up the following environment variables:
 
 - `OPENAI_API_KEY` – your OpenAI API key (you can get one [here](https://platform.openai.com/account/api-keys))
 
@@ -64,16 +64,16 @@ git clone https://github.com/ConnectAI-E/BaseScript-LinkPreview
 pnpm install
 pnpm dev
 ```
-2️⃣ copy chat-base dev link to the extension script address
+2️⃣ copy talkbase dev link to the extension script address
 ```
 http://localhost:5173/
 ```
 
 ## Deploy your own
 
-You can deploy your own version of Chat-Base with one-click:
+You can deploy your own version of TalkBase with one-click:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ConnectAI-E/Chat-Base&env=OPENAI_API_KEY&project-name=chat-calc&repository-name=Chat-Base)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ConnectAI-E/TalkBase&env=OPENAI_API_KEY&project-name=chat-calc&repository-name=Chat-Base)
 </details>
 
 
