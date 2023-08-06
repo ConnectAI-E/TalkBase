@@ -5,7 +5,7 @@ import Textarea from 'react-textarea-autosize';
 import {githubUrl} from '../../constant';
 import {DataWriter} from '../../utils/BaseSchema/dataWriter';
 import {TableParser} from '../../utils/BaseSchema/tableParser';
-import {bitable} from '@base-open/web-api';
+import {toast} from 'sonner';
 
 const examples = [
     '赵先生 148722376662 湖北省黄冈市王家庄21号',
@@ -27,8 +27,18 @@ const writeData = async (input: string, tableSchema: string, setTableInfoNow: st
     return _json.res;
 };
 
-
-
+const guessTable = async (tableType: string) => {
+    const response = await fetch('/api/guess', {
+        method: 'POST',
+        body: JSON.stringify(
+            {
+                tsString: tableType,
+            },
+        ),
+    });
+    const _json = await response.json();
+    return _json.result
+}
 
 export default function Chat() {
     const formRef = useRef<HTMLFormElement>(null);
@@ -43,6 +53,7 @@ export default function Chat() {
     const [tableSchema, setTableSchema] = useState<any>('');
     const [currentTable, setCurrentTable] = useState<any>({});
 
+    const [tableDescription, setTableDescription] = useState<any>('正在加载表格用途...');
     useEffect(() => {
         if (!bitable) {
             return;
@@ -61,7 +72,10 @@ export default function Chat() {
 
             setTableInfoNow(tableInfo);
             const _baseTable = new TableParser(tableInfo);
+            console.log(_baseTable.typeStr);
             setTableSchema(_baseTable.typeStr);
+            const tableDescription = await guessTable(_baseTable.typeStr);
+            setTableDescription(tableDescription);
         };
 
         Promise.all([bitable.base.getTableMetaList(), bitable.base.getSelection()])
@@ -73,6 +87,7 @@ export default function Chat() {
 
         const off = bitable.base.onSelectionChange(async (event: any) => {
             updateTableInfo(event?.data?.tableId, totalTable);
+            toast.success('Detect New Table Field');
         });
 
         return () => {
@@ -116,8 +131,8 @@ export default function Chat() {
                 </a>
             </div>
             {
-                <div className="mx-2 mt-2 max-w-screen-md rounded-md  w-80%">
-                    <div className="flex flex-col space-y-4 p-7 border sm:p-10  px-10">
+                <div className="mx-2  max-w-screen-md rounded-md  w-80%">
+                    <div className="flex flex-col space-y-4 p-4 border sm:p-10  px-10">
                         <h1 className="text-lg font-semibold text-black">
                             Welcome to ChatBase!
                         </h1>
@@ -164,19 +179,13 @@ export default function Chat() {
                         </p>
                     </div>
                     <div
-                        className="flex flex-col space-y-4 border-t border-gray-200 bg-gray-50 p-7 sm:p-10">
-                        { examples.map((example, i) => (
-                            <button
-                                key={ i }
-                                className="rounded-md border border-gray-200 bg-white px-5 py-3 text-left text-sm text-gray-500 transition-all duration-75 hover:border-black hover:text-gray-700 active:bg-gray-50"
-                                onClick={ () => {
-                                    setInput(example);
-                                    inputRef.current?.focus();
-                                } }
-                            >
-                                { example }
-                            </button>
-                        )) }
+                        className="flex flex-col space-y-1 border-t border-gray-200 bg-gray-50 p-3 sm:p-10">
+                        <div
+                            className="rounded-md border border-gray-200 bg-white px-5 py-3 text-left text-sm text-gray-500 transition-all duration-75 hover:border-black hover:text-gray-700 active:bg-gray-50"
+                        >
+                            { tableDescription }
+                        </div>
+
                     </div>
                 </div>
             }
@@ -193,7 +202,7 @@ export default function Chat() {
                         required
                         rows={ 1 }
                         autoFocus
-                        placeholder="Type something write to record.. "
+                        placeholder="Type something to record.. "
                         value={ input }
                         onChange={ (e) => setInput(e.target.value) }
                         spellCheck={ false }
