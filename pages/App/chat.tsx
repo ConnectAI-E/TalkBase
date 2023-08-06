@@ -53,7 +53,7 @@ export default function Chat() {
     const [tableInfoNow, setTableInfoNow] = useState<any>({});
     const [tableSchema, setTableSchema] = useState<any>('');
     const [currentTable, setCurrentTable] = useState<any>({});
-
+    const nowTableId = useRef<any>(null);
     const defaultDescription = '正在加载表格用途...';
     const [tableDescription, setTableDescription] = useState<any>(defaultDescription);
     useEffect(() => {
@@ -72,6 +72,7 @@ export default function Chat() {
                 name: currentTableMeta?.name,
                 fields: fields,
             };
+            console.log(tableInfo);
 
             setTableInfoNow(tableInfo);
             const _baseTable = new TableParser(tableInfo);
@@ -84,11 +85,17 @@ export default function Chat() {
         Promise.all([bitable.base.getTableMetaList(), bitable.base.getSelection()])
             .then(async ([metaList, selection]) => {
                 totalTable = metaList;
+                nowTableId.current = selection?.tableId;
                 updateTableInfo(selection?.tableId, totalTable);
             });
 
 
         const off = bitable.base.onSelectionChange(async (event: any) => {
+            // 检测tableId是否改变
+            if (event?.data?.tableId ===  nowTableId.current) {
+                return;
+            }
+            nowTableId.current = event?.data?.tableId;
             updateTableInfo(event?.data?.tableId, totalTable);
             toast.success('Detect New Table Field');
         });
