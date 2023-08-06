@@ -1,6 +1,6 @@
 <a href="https://Chat-Calc.vercel.app">
 
-  <h1 align="center">ChatBase</h1>
+  <h1 align="center">ThatBase</h1>
 </a>
 
 <p align="center">
