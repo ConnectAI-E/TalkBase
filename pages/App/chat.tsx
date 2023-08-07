@@ -79,6 +79,7 @@ export default function Chat() {
             console.log(_baseTable.typeStr);
             setTableSchema(_baseTable.typeStr);
             const tableDescription = await guessTable(_baseTable.typeStr);
+            console.log(tableDescription);
             setTableDescription(tableDescription);
         };
 
@@ -118,6 +119,7 @@ export default function Chat() {
             const _json = await writeData(input, tableSchema, tableInfoNow.name).finally(() => {
                 setInput('');
             });
+            console.log(_json);
             const record = new DataWriter(tableInfoNow);
             currentTable.addRecord({
                 fields: record.load(_json).recordFormat,

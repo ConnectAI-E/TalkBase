@@ -11,6 +11,7 @@ const tableInfo: TableProps = {
         name: 'content',
         property: {},
     },
+        // 单选
         {
             id: 'fld1g8LMRX',
             type: 3,
@@ -33,11 +34,33 @@ const tableInfo: TableProps = {
                     }],
             },
         },
+        //多选
+        {
+            id: 'fldfZnyFTg',
+            type: 4,
+            name: 'fruit',
+            property: {
+                options: [{
+                    id: 'optdh2v28L',
+                    name: '橘子',
+                    color: 0,
+                },
+                    {
+                        id: 'opt3HpQCOH',
+                        color: 1,
+                        name: '苹果',
+                    },
+                    {
+                        id: 'opt1UsIu8H',
+                        color: 2,
+                        name: '菠萝',
+                    }],
+            },
+        },
     ],
 };
 
 describe('BaseSchema class init', () => {
-
     const core = new TableParser(tableInfo);
     it('get table title', () => {
         expect(core.title).toBe('SentimentResponse');
@@ -60,9 +83,14 @@ describe('BaseSchema class format', () => {
         expect(core.formatSelectField(tableInfo.fields[1])).toBe(`sentiment: "negative" | "neutral" | "positive";`);
     });
 
+    it('should format multi select field', function () {
+        expect(core.formatMultiSelectField(tableInfo.fields[2])).toBe(`fruit: ("橘子" | "苹果" | "菠萝")[];`);
+    });
+
     it('should format field', function () {
         expect(core.formatField(tableInfo.fields[0])).toBe('content: string;');
         expect(core.formatField(tableInfo.fields[1])).toBe(`sentiment: "negative" | "neutral" | "positive";`);
+        expect(core.formatField(tableInfo.fields[2])).toBe(`fruit: ("橘子" | "苹果" | "菠萝")[];`);
     });
 
     it('should format title', function () {

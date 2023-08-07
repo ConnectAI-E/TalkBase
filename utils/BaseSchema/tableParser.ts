@@ -32,12 +32,27 @@ export class TableParser {
         const optionsStr = options.map((o: any) => `"${o.name}"`).join(' | ');
         return `${field.name}: ${optionsStr};`;
     }
+
+    formatMultiSelectField(field: IBaseFieldMeta) {
+        const property = field.property as any
+        if (!property || !property?.options) {{
+            return '';}
+        }
+        const options = property.options as any
+        if (!options) {
+            return '';
+        }
+        const optionsStr = options.map((o: any) => `"${o.name}"`).join(' | ');
+        return `${field.name}: (${optionsStr})[];`;
+    }
     formatField(field: IBaseFieldMeta) {
         switch (field.type) {
             case 1:
                 return this.formatStringField(field);
             case 3:
                 return this.formatSelectField(field);
+            case 4:
+                return this.formatMultiSelectField(field);
             default:
                 return '';
         }

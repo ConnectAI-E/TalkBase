@@ -33,10 +33,34 @@ const tableInfo: TableProps = {
                     }],
             },
         },
+        //多选
+        {
+            id: 'fldfZnyFTg',
+            type: 4,
+            name: 'fruit',
+            property: {
+                options: [{
+                    id: 'optdh2v28L',
+                    name: '橘子',
+                    color: 0,
+                },
+                    {
+                        id: 'opt3HpQCOH',
+                        color: 1,
+                        name: '苹果',
+                    },
+                    {
+                        id: 'opt1UsIu8H',
+                        color: 2,
+                        name: '菠萝',
+                    }],
+            },
+        },
     ],
 };
 
 const resultExample = { content: 'TypeChat is awesome!', sentiment: 'positive' };
+const resultExample2 = { content: '我喜欢吃苹果和橘子', fruit: ['苹果', '橘子'] };
 describe('dataWriter init', () => {
     it('should init', function () {
         expect(new DataWriter(tableInfo)).toBeDefined();
@@ -75,6 +99,23 @@ describe('parse select', () => {
         });
     });
 });
+
+describe('parse multi select', () => {
+    const core = new DataWriter(tableInfo);
+    it('should parse multi select field', () => {
+        expect(core.load(resultExample2).parseOneField(tableInfo.fields[2])).toEqual([
+            {
+                id: 'opt3HpQCOH',
+                text: '苹果',
+            },
+            {
+                id: 'optdh2v28L',
+                text: '橘子',
+            }
+        ]);
+    });
+})
+
 
 describe('parse all type', () => {
     const core = new DataWriter(tableInfo);

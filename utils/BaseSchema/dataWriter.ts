@@ -55,16 +55,26 @@ export class DataWriter {
 
 
     parseOneField(field: IBaseFieldMeta) {
-        const itemValue = this.getItem(field.name);
+        const itemValue = this.getItem(field.name) as any
         if (!itemValue) {
             return null;
         }
+        //文本
         if (field.type === 1) {
             return this.exportText(itemValue);
         }
+        //单选
         if (field.type === 3) {
             const labelId = this.findSelectLabelId(field, itemValue);
             return this.exportSelect(itemValue, labelId);
+        }
+        // //多选
+        if (field.type === 4) {
+            const labelMeta = itemValue.map((v: string) => {
+                const labelId = this.findSelectLabelId(field, v);
+                return [v, labelId];
+            })
+            return labelMeta.map((v: any) => this.exportSelect(v[0], v[1]));
         }
         return null;
     }
