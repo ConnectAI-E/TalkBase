@@ -146,7 +146,7 @@ export default function Chat() {
                 <div className="mx-2  max-w-screen-md rounded-md  w-80%">
                     <div className="flex flex-col space-y-4 p-4 border sm:p-10  px-10">
                         <h1 className="text-lg font-semibold text-black">
-                            Welcome to ChatBase!
+                            Welcome to TalkBase!
                         </h1>
                         <p className="text-gray-500">
                             This is an{ ' ' }
