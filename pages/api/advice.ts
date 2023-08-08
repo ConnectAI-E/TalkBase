@@ -5,7 +5,6 @@ import { Configuration, OpenAIApi } from 'openai'
 
 type Prop = {
     tsString: string; // TypeScript string of the table
-
 }
 
 const configuration = new Configuration({
@@ -19,7 +18,7 @@ const getTableDescription = async (tsString: string) => {
     const chatCompletion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
         messages: [
-            {role:"system", content: "根据下面的类型文件结构，判断出此表格的作用，只说结论，不超过20字",},
+            {role:"system", content: "According to the following type structure, judge the role of this table, only say the conclusion, no more than 30 words",},
             {role: "user", content: tsString,}],
     }) as any;
     return chatCompletion.data.choices[0].message.content;
@@ -34,4 +33,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 export default handler;
+
+
+
 

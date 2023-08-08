@@ -22,14 +22,14 @@ const writeData = async (input: string, tableSchema: string, setTableInfoNow: st
     });
     const _json = await response.json();
     if (_json.error) {
-        toast.error("内容解析失败");
+        toast.error("Content parsing failed");
         throw new Error(_json.error);
     }
     return _json.res;
 };
 
 const guessTable = async (tableType: string) => {
-    const response = await fetch('/api/guess', {
+    const response = await fetch('/api/describe', {
         method: 'POST',
         body: JSON.stringify(
             {
@@ -54,7 +54,7 @@ export default function Chat() {
     const [tableSchema, setTableSchema] = useState<any>('');
     const [currentTable, setCurrentTable] = useState<any>({});
     const nowTableId = useRef<any>(null);
-    const defaultDescription = '正在加载表格用途...';
+    const defaultDescription = 'Loading table purpose ...';
     const [tableDescription, setTableDescription] = useState<any>(defaultDescription);
     useEffect(() => {
         if (!bitable) {
