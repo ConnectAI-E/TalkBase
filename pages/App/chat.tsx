@@ -41,6 +41,19 @@ const guessTable = async (tableType: string) => {
     return _json.result
 }
 
+const adviceTableInput = async (tableType: string) => {
+    const response = await fetch('/api/advice', {
+        method: 'POST',
+        body: JSON.stringify(
+            {
+                tsString: tableType,
+            },
+        ),
+    });
+    const _json = await response.json();
+    return _json.result
+}
+
 export default function Chat() {
     const formRef = useRef<HTMLFormElement>(null);
     const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -56,6 +69,9 @@ export default function Chat() {
     const nowTableId = useRef<any>(null);
     const defaultDescription = 'Loading table purpose ...';
     const [tableDescription, setTableDescription] = useState<any>(defaultDescription);
+    const defaultAdvice = 'Loading table advice ...';
+    const [tableAdvice, setTableAdvice] = useState<any>(defaultAdvice);
+
     useEffect(() => {
         if (!bitable) {
             return;
@@ -64,6 +80,7 @@ export default function Chat() {
 
         const updateTableInfo = async (tableId: any, totalTable: []) => {
             setTableDescription(defaultDescription);
+            setTableAdvice(defaultAdvice);
             const currentTableMeta = totalTable.find(({ id }: { id: any }) => id === tableId) as any;
             const currentTable = await bitable.base.getTableById(currentTableMeta?.id);
             setCurrentTable(currentTable);
@@ -77,10 +94,16 @@ export default function Chat() {
             setTableInfoNow(tableInfo);
             const _baseTable = new TableParser(tableInfo);
             console.log(_baseTable.typeStr);
+
             setTableSchema(_baseTable.typeStr);
             const tableDescription = await guessTable(_baseTable.typeStr);
+
             console.log(tableDescription);
             setTableDescription(tableDescription);
+
+            const tableAdvice = await adviceTableInput(_baseTable.typeStr);
+            console.log(tableAdvice);
+            setTableAdvice(tableAdvice);
         };
 
         Promise.all([bitable.base.getTableMetaList(), bitable.base.getSelection()])
@@ -214,10 +237,22 @@ export default function Chat() {
                         required
                         rows={ 1 }
                         autoFocus
-                        placeholder="Type something to record.. "
+                        placeholder={tableAdvice}
                         value={ input }
                         onChange={ (e) => setInput(e.target.value) }
                         spellCheck={ false }
+                        onKeyDown={ (e) => {
+                          // 如果是tab就补全placeholder
+                            if (e.key === 'Tab') {
+                                e.preventDefault();
+                                setInput(tableAdvice);
+                            }
+                            // enter 就发送
+                            if (e.key === 'Enter') {
+                                e.preventDefault();
+                                handleSubmit();
+                            }
+                        }}
                         className="w-full pr-10 focus:outline-none"
                     />
                     <button
