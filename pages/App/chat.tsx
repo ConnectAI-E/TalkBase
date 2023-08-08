@@ -6,7 +6,8 @@ import {githubUrl} from '../../constant';
 import {DataWriter} from '../../utils/BaseSchema/dataWriter';
 import {TableParser} from '../../utils/BaseSchema/tableParser';
 import {toast} from 'sonner';
-
+import Footer from '../../components/footer';
+import Header from '../../components/header';
 
 
 const writeData = async (input: string, tableSchema: string, setTableInfoNow: string) => {
@@ -22,7 +23,7 @@ const writeData = async (input: string, tableSchema: string, setTableInfoNow: st
     });
     const _json = await response.json();
     if (_json.error) {
-        toast.error("Content parsing failed");
+        toast.error('Content parsing failed');
         throw new Error(_json.error);
     }
     return _json.res;
@@ -38,8 +39,8 @@ const guessTable = async (tableType: string) => {
         ),
     });
     const _json = await response.json();
-    return _json.result
-}
+    return _json.result;
+};
 
 const adviceTableInput = async (tableType: string) => {
     const response = await fetch('/api/advice', {
@@ -51,8 +52,8 @@ const adviceTableInput = async (tableType: string) => {
         ),
     });
     const _json = await response.json();
-    return _json.result
-}
+    return _json.result;
+};
 
 export default function Chat() {
     const formRef = useRef<HTMLFormElement>(null);
@@ -67,9 +68,9 @@ export default function Chat() {
     const [tableSchema, setTableSchema] = useState<any>('');
     const [currentTable, setCurrentTable] = useState<any>({});
     const nowTableId = useRef<any>(null);
-    const defaultDescription = 'Loading table purpose ...';
+    const defaultDescription = 'Loading table description ...';
     const [tableDescription, setTableDescription] = useState<any>(defaultDescription);
-    const defaultAdvice = 'Loading table advice ...';
+    const defaultAdvice = 'Loading record advice ...';
     const [tableAdvice, setTableAdvice] = useState<any>(defaultAdvice);
 
     useEffect(() => {
@@ -116,7 +117,7 @@ export default function Chat() {
 
         const off = bitable.base.onSelectionChange(async (event: any) => {
             // 检测tableId是否改变
-            if (event?.data?.tableId ===  nowTableId.current) {
+            if (event?.data?.tableId === nowTableId.current) {
                 return;
             }
             nowTableId.current = event?.data?.tableId;
@@ -165,65 +166,18 @@ export default function Chat() {
                     <GithubIcon/>
                 </a>
             </div>
-            {
-                <div className="mx-2  max-w-screen-md rounded-md  w-80%">
-                    <div className="flex flex-col space-y-4 p-4 border sm:p-10  px-10">
-                        <h1 className="text-lg font-semibold text-black">
-                            Welcome to TalkBase!
-                        </h1>
-                        <p className="text-gray-500">
-                            This is an{ ' ' }
-                            <a
-                                href={ githubUrl }
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="font-medium underline underline-offset-4 transition-colors hover:text-black"
-                            >
-                                open-source
-                            </a>{ ' ' }
-                            AI chatbot that uses{ ' ' }
-                            <a
-                                href="https://github.com/microsoft/TypeChat"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="font-medium underline underline-offset-4 transition-colors hover:text-black"
-                            >
-                                TypeChat
-                            </a>{ ' ' }
-                            and{ ' ' }
-                            <a
-                                href="https://sdk.vercel.ai/docs"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="font-medium underline underline-offset-4 transition-colors hover:text-black"
-                            >
-                                Vercel
-                            </a>{ ' ' }
-                            to write date to lark-base by natural language.
-                            <br/>
-                            <br/>
-                            Project is made by { ' ' }
-                            <a
-                                href="https://github.com/ConnectAI-E"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="font-medium underline underline-offset-4 transition-colors hover:text-black"
-                            >
-                                ConnectAI
-                            </a>{ ' ' } with ❤️ .
-                        </p>
-                    </div>
+            <div className="mx-2  max-w-screen-md rounded-md  w-80%">
+                <Header/>
+                <div
+                    className="flex flex-col space-y-1 border-t border-gray-200 bg-gray-50 p-3 sm:p-10">
                     <div
-                        className="flex flex-col space-y-1 border-t border-gray-200 bg-gray-50 p-3 sm:p-10">
-                        <div
-                            className="rounded-md border border-gray-200 bg-white px-5 py-3 text-left text-sm text-gray-500 transition-all duration-75 hover:border-black hover:text-gray-700 active:bg-gray-50"
-                        >
-                            { tableDescription }
-                        </div>
-
+                        className="rounded-md border border-gray-200 bg-white px-5 py-3 text-left text-sm text-gray-500 transition-all duration-75 hover:border-black hover:text-gray-700 active:bg-gray-50"
+                    >
+                        { tableDescription }
                     </div>
+
                 </div>
-            }
+            </div>
             <div
                 className="fixed bottom-0 flex w-full flex-col items-center space-y-3 bg-gradient-to-b from-transparent via-gray-100 to-gray-100 p-5 pb-3 sm:px-0">
                 <form
@@ -237,12 +191,12 @@ export default function Chat() {
                         required
                         rows={ 1 }
                         autoFocus
-                        placeholder={tableAdvice}
+                        placeholder={ tableAdvice }
                         value={ input }
                         onChange={ (e) => setInput(e.target.value) }
                         spellCheck={ false }
                         onKeyDown={ (e) => {
-                          // 如果是tab就补全placeholder
+                            // 如果是tab就补全placeholder
                             if (e.key === 'Tab') {
                                 e.preventDefault();
                                 setInput(tableAdvice);
@@ -252,8 +206,8 @@ export default function Chat() {
                                 e.preventDefault();
                                 handleSubmit();
                             }
-                        }}
-                        className="w-full pr-10 focus:outline-none"
+                        } }
+                        className="w-full pr-10 focus:outline-none text-sm"
                     />
                     <button
                         type="button"
@@ -278,36 +232,7 @@ export default function Chat() {
                         ) }
                     </button>
                 </form>
-                <p className="text-center text-xs text-gray-400">
-                    Built with{ ' ' }
-                    <a
-                        href="https://github.com/microsoft/TypeChat"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="transition-colors hover:text-black"
-                    >
-                        TypeChat
-                    </a>{ ' ' }
-                    and{ ' ' }
-                    <a
-                        href="https://sdk.vercel.ai/docs"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="transition-colors hover:text-black"
-                    >
-                        Vercel AI SDK
-                    </a>
-                    { ' ' }
-                    <a
-                        href="https://github.com/ConnectAI-E/Chat-Calculator"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="transition-colors hover:text-black"
-                    >
-                        Star the repo on GitHub
-                    </a>{ ' ' }
-                    .
-                </p>
+                <Footer/>
             </div>
         </div>
     );
