@@ -8,7 +8,7 @@ import {TableParser} from '../../utils/BaseSchema/tableParser';
 import {toast} from 'sonner';
 import Footer from '../../components/footer';
 import Header from '../../components/header';
-
+import {debounceWarp} from '../../utils/tool';
 
 const writeData = async (input: string, tableSchema: string, setTableInfoNow: string) => {
     const response = await fetch('/api/table', {
@@ -55,6 +55,7 @@ const adviceTableInput = async (tableType: string) => {
     return _json.result;
 };
 
+
 export default function Chat() {
     const formRef = useRef<HTMLFormElement>(null);
     const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -80,8 +81,8 @@ export default function Chat() {
         let totalTable: any = [];
 
         const updateTableInfo = async (tableId: any, totalTable: []) => {
-            setTableDescription(defaultDescription);
-            setTableAdvice(defaultAdvice);
+            console.log(12321);
+
             const currentTableMeta = totalTable.find(({ id }: { id: any }) => id === tableId) as any;
             const currentTable = await bitable.base.getTableById(currentTableMeta?.id);
             setCurrentTable(currentTable);
@@ -106,6 +107,7 @@ export default function Chat() {
             console.log(tableAdvice);
             setTableAdvice(tableAdvice);
         };
+        const updateInfoDebounce =debounceWarp(updateTableInfo, 1800);
 
         Promise.all([bitable.base.getTableMetaList(), bitable.base.getSelection()])
             .then(async ([metaList, selection]) => {
@@ -121,7 +123,9 @@ export default function Chat() {
                 return;
             }
             nowTableId.current = event?.data?.tableId;
-            updateTableInfo(event?.data?.tableId, totalTable);
+            updateInfoDebounce(event?.data?.tableId, totalTable);
+            setTableDescription(defaultDescription);
+            setTableAdvice(defaultAdvice);
             toast.success('Detect New Table Field');
         });
 
