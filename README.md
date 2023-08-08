@@ -31,9 +31,12 @@
 TalkBase is an open-source AI chatbot that uses [TypeChat](https://github.com/microsoft/TypeChat) and the [Vercel AI SDK](https://sdk.vercel.ai/docs) to interact with natural language.
 
 
+🐵 Easily enter data by natural language , with the requirements table field meta and descriptions.
 ![chatbasegif](https://github.com/ConnectAI-E/Chat-Base/assets/110169811/3f69a25a-f66b-450a-a478-1986debd37b3)
 
 
+🙈 automatically describe the purpose of the table and give text suggestions for entering data
+![quickShow](https://github.com/ConnectAI-E/TalkBase/assets/50035229/10ddf80a-c504-4c42-b516-d70cf9e50268)
 
 ## Quick Start
 
