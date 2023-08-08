@@ -14,18 +14,18 @@ const openai = new OpenAIApi(configuration);
 
 function generateTemplate(tsStr: string) {
     return `Q： export interface food {
-size: "大份" | "中份" | "小份";
+size: "large" | "middle" | "small";
 meat: string;
-staple_food: "米饭" | "面条" | "饺子";
+staple_food: "rice" | "noodles" | "dumplings";
 full_content: string;
-spicy: "不要辣" | "微辣";
+spicy: boolean;
 }
-A：来份鸡蛋炒饭，加份辣子
+A：Fried rice with egg and chili pepper.
 Q:  export interface SentimentResponse {
 content: string;
 sentiment: "negative" | "neutral" | "positive";
 }
-A: 今天表现很不错哦
+A: Well done today
 Q: ${ tsStr }
 A: `;
 }

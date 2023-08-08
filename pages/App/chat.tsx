@@ -171,7 +171,7 @@ export default function Chat() {
                 <div
                     className="flex flex-col space-y-1 border-t border-gray-200 bg-gray-50 p-3 sm:p-10">
                     <div
-                        className="rounded-md border border-gray-200 bg-white px-5 py-3 text-left text-sm text-gray-500 transition-all duration-75 hover:border-black hover:text-gray-700 active:bg-gray-50"
+                        className="rounded-md break-all border border-gray-200 bg-white px-5 py-3 text-left text-sm text-gray-500 transition-all duration-75 hover:border-black hover:text-gray-700 active:bg-gray-50"
                     >
                         { tableDescription }
                     </div>
