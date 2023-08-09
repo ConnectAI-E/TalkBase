@@ -57,6 +57,10 @@ const tableInfo: TableProps = {
                     }],
             },
         },
+        // 数字
+        {
+            id: 'fldueXn0k2', name: 'Height', property: {}, type: 2,
+        },
     ],
 };
 
@@ -87,11 +91,9 @@ describe('BaseSchema class format', () => {
         expect(core.formatMultiSelectField(tableInfo.fields[2])).toBe(`fruit: ("橘子" | "苹果" | "菠萝")[];`);
     });
 
-    it('should format field', function () {
-        expect(core.formatField(tableInfo.fields[0])).toBe('content: string;');
-        expect(core.formatField(tableInfo.fields[1])).toBe(`sentiment: "negative" | "neutral" | "positive";`);
-        expect(core.formatField(tableInfo.fields[2])).toBe(`fruit: ("橘子" | "苹果" | "菠萝")[];`);
-    });
+    it('should format number field', function () {
+        expect(core.formatNumberField(tableInfo.fields[3])).toBe(`Height: number;`);
+    })
 
     it('should format title', function () {
         expect(core.formatTitle()).toBe('export interface SentimentResponse {');

@@ -45,10 +45,16 @@ export class TableParser {
         const optionsStr = options.map((o: any) => `"${o.name}"`).join(' | ');
         return `${field.name}: (${optionsStr})[];`;
     }
+    formatNumberField(iBaseFieldMeta: IBaseFieldMeta) {
+        return `${iBaseFieldMeta.name}: number;`;
+    }
+
     formatField(field: IBaseFieldMeta) {
         switch (field.type) {
             case 1:
                 return this.formatStringField(field);
+            case 2:
+                return this.formatNumberField(field);
             case 3:
                 return this.formatSelectField(field);
             case 4:
@@ -57,6 +63,8 @@ export class TableParser {
                 return '';
         }
     }
+
+
 
     formatTitle() {
         return `export interface ${this.title} {`;

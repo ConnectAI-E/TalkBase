@@ -56,11 +56,15 @@ const tableInfo: TableProps = {
                     }],
             },
         },
+        {
+            id: 'fldueXn0k2', name: 'Height', property: {}, type: 2,
+        },
     ],
 };
 
 const resultExample = { content: 'TypeChat is awesome!', sentiment: 'positive' };
 const resultExample2 = { content: '我喜欢吃苹果和橘子', fruit: ['苹果', '橘子'] };
+const resultExample3 = { Height: 180 };
 describe('dataWriter init', () => {
     it('should init', function () {
         expect(new DataWriter(tableInfo)).toBeDefined();
@@ -116,6 +120,12 @@ describe('parse multi select', () => {
     });
 })
 
+describe('parse number', () => {
+    const core = new DataWriter(tableInfo);
+    it('should parse number field', () => {
+        expect(core.load(resultExample3).parseOneField(tableInfo.fields[3])).toEqual(180);
+    });
+})
 
 describe('parse all type', () => {
     const core = new DataWriter(tableInfo);

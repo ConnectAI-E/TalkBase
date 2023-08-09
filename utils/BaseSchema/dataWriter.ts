@@ -25,6 +25,10 @@ export class DataWriter {
         };
     }
 
+    exportNumber(number: number) {
+        return number;
+    }
+
     exportSelect(label: string, labelId: string) {
         return {
             id: labelId,
@@ -62,6 +66,10 @@ export class DataWriter {
         //文本
         if (field.type === 1) {
             return this.exportText(itemValue);
+        }
+        //数字
+        if (field.type === 2) {
+            return this.exportNumber(itemValue);
         }
         //单选
         if (field.type === 3) {
