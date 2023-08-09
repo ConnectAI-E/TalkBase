@@ -1,4 +1,4 @@
-<a href="https://chatbase.connectai.site/">
+<a href="https://talkbase.connectai.site/">
   <img width="100%" alt="image" src="https://github.com/ConnectAI-E/TalkBase/assets/50035229/6edf828f-ff44-41b5-b3f4-4e520d3e6432">
 </a>
 <br/>
@@ -36,7 +36,7 @@ TalkBase is an open-source AI chatbot that uses [TypeChat](https://github.com/mi
 
 
 🐵 Only English？ no! any langguage such as Chinese
-![chatbasegif](https://github.com/ConnectAI-E/Chat-Base/assets/110169811/3f69a25a-f66b-450a-a478-1986debd37b3)
+![talkbasegif](https://github.com/ConnectAI-E/Chat-Base/assets/110169811/3f69a25a-f66b-450a-a478-1986debd37b3)
 
 
 🙈 automatically describe the purpose of the table and give text suggestions for entering data
@@ -50,7 +50,7 @@ https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=c55n4142-fc
   
 2️⃣  copy talk-base online link to the extension script address 
 ```
-https://chatbase.connectai.site/
+https://talkbase.connectai.site/
 ```
 3️⃣ start to chat-base ~
 
