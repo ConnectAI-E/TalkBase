@@ -32,6 +32,10 @@ TalkBase is an open-source AI chatbot that uses [TypeChat](https://github.com/mi
 
 
 🐵 Easily enter data by natural language , with the requirements table field meta and descriptions.
+![show_example](https://github.com/ConnectAI-E/TalkBase/assets/50035229/d26bcf56-d006-4f24-b84b-7480b01eff84)
+
+
+🐵 Only English？ no! any langguage such as Chinese
 ![chatbasegif](https://github.com/ConnectAI-E/Chat-Base/assets/110169811/3f69a25a-f66b-450a-a478-1986debd37b3)
 
 
