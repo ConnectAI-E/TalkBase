@@ -96,6 +96,9 @@ ChatH is built on the following stack:
 - [Vercel](https://vercel.com) - deployments
 - [TailwindCSS](https://tailwindcss.com/) – css styles
 
+## Communication
+
+<img src="https://github.com/ConnectAI-E/TalkBase/assets/50035229/d55de9d9-8f78-493e-a4bd-a83c0d8b4796" alt="License" width="200" />
 
 ## License
 
