@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from 'react';
 import clsx from 'clsx';
-import {GithubIcon, LoadingCircle, SendIcon} from '../../utils/icons';
+import {GithubIcon, LanguageIcon, LoadingCircle, SendIcon} from '../../utils/icons';
 import Textarea from 'react-textarea-autosize';
 import {githubUrl} from '../../constant';
 import {DataWriter} from '../../utils/BaseSchema/dataWriter';
@@ -161,16 +161,16 @@ export default function Chat() {
 
     return (
         <div className="flex flex-col items-center justify-between ">
-            <div className="absolute top-5 hidden w-full justify-end px-5 sm:flex">
+            <div className="absolute top-5 w-full justify-end px-5 flex">
                 <a
                     href={ githubUrl }
                     target="_blank"
                     className="rounded-lg p-2 transition-colors duration-200 hover:bg-stone-100 sm:bottom-auto"
                 >
-                    <GithubIcon/>
+                    <LanguageIcon/>
                 </a>
             </div>
-            <div className="mx-2  max-w-screen-md rounded-md  w-80%">
+            <div className="mx-2  max-w-screen-md rounded-md pt-2 w-80%">
                 <Header/>
                 <div
                     className="flex flex-col space-y-1 border-t border-gray-200 bg-gray-50 p-3 sm:p-10">
