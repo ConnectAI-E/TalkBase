@@ -1,4 +1,4 @@
-<a href="https://chatbase.connectai.site/">
+<a href="https://talkbase.connectai.site/">
   <img width="100%" alt="image" src="https://github.com/ConnectAI-E/TalkBase/assets/50035229/6edf828f-ff44-41b5-b3f4-4e520d3e6432">
 </a>
 <br/>
@@ -32,7 +32,11 @@ TalkBase is an open-source AI chatbot that uses [TypeChat](https://github.com/mi
 
 
 🐵 Easily enter data by natural language , with the requirements table field meta and descriptions.
-![chatbasegif](https://github.com/ConnectAI-E/Chat-Base/assets/110169811/3f69a25a-f66b-450a-a478-1986debd37b3)
+![show_example](https://github.com/ConnectAI-E/TalkBase/assets/50035229/d26bcf56-d006-4f24-b84b-7480b01eff84)
+
+
+🐵 Only English？ no! any langguage such as Chinese
+![talkbasegif](https://github.com/ConnectAI-E/Chat-Base/assets/110169811/3f69a25a-f66b-450a-a478-1986debd37b3)
 
 
 🙈 automatically describe the purpose of the table and give text suggestions for entering data
@@ -46,7 +50,7 @@ https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=c55n4142-fc
   
 2️⃣  copy talk-base online link to the extension script address 
 ```
-https://chatbase.connectai.site/
+https://talkbase.connectai.site/
 ```
 3️⃣ start to chat-base ~
 
@@ -92,6 +96,9 @@ ChatH is built on the following stack:
 - [Vercel](https://vercel.com) - deployments
 - [TailwindCSS](https://tailwindcss.com/) – css styles
 
+## Communication
+
+<img src="https://github.com/ConnectAI-E/TalkBase/assets/50035229/d55de9d9-8f78-493e-a4bd-a83c0d8b4796" alt="License" width="200" />
 
 ## License
 
