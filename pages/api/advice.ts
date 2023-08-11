@@ -57,8 +57,7 @@ const getTableAdvice = async (tsString: string, lang :string) => {
     const messages= [
             {
                 role: 'system',
-                content: '.' +
-                ifZh ? 'According to the following type file structure, after judging the function of this form, assuming the appropriate situation, use human natural language to give an example input, be natural  and no more than 20 words. 记住，用中文回答 ' : 'According to the following type file structure, after judging the function of this form, assuming the appropriate situation, use human natural language to give an example input, be natural  and no more than 20 words.Must Answer in English',
+                content: ifZh ? 'According to the following type file structure, after judging the function of this form, assuming the appropriate situation, use human natural language to give an example input, be natural  and no more than 20 words. 记住，用中文回答 ' : 'According to the following type file structure, after judging the function of this form, assuming the appropriate situation, use human natural language to give an example input, be natural  and no more than 20 words.Must Answer in English',
             },
             { role: 'user', content: ifZh ? generateZhTemplate(tsString) : generateTemplate(tsString) }] as any;
     console.log(messages);
