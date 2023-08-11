@@ -28,6 +28,11 @@ content: string;
 sentiment: "negative" | "neutral" | "positive";
 }
 A: Well done today
+Q: export interface book {
+book_name: string;
+is_novel: boolean;
+}
+A: harry potter
 Q: ${ tsStr }
 A: `;
 }
@@ -46,6 +51,11 @@ content: string;
 sentiment: "negative" | "neutral" | "positive";
 }
 A: 今天做的不错 
+Q: export interface book {
+book_name: string;
+is_novel: boolean;
+}
+A: 色戒
 Q: ${ tsStr }
 A: `;
 }

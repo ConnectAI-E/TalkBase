@@ -56,15 +56,22 @@ const tableInfo: TableProps = {
                     }],
             },
         },
+        //数字
         {
             id: 'fldueXn0k2', name: 'Height', property: {}, type: 2,
         },
+        // 复选框
+        {
+            id: 'fldueXn0k2', name: 'is_novel', property: {}, type: 7,
+        }
     ],
 };
 
 const resultExample = { content: 'TypeChat is awesome!', sentiment: 'positive' };
 const resultExample2 = { content: '我喜欢吃苹果和橘子', fruit: ['苹果', '橘子'] };
 const resultExample3 = { Height: 180 };
+const resultExample4 = { is_novel: true };
+
 describe('dataWriter init', () => {
     it('should init', function () {
         expect(new DataWriter(tableInfo)).toBeDefined();
@@ -127,6 +134,12 @@ describe('parse number', () => {
     });
 })
 
+describe('parse boolean', () => {
+    const core = new DataWriter(tableInfo);
+    it('should parse boolean field', () => {
+        expect(core.load(resultExample4).parseOneField(tableInfo.fields[4])).toEqual(true);
+    });
+})
 describe('parse all type', () => {
     const core = new DataWriter(tableInfo);
     it('should parse all', () => {

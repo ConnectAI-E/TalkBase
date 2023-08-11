@@ -28,6 +28,9 @@ export class DataWriter {
     exportNumber(number: number) {
         return number;
     }
+    exportBoolean(boolean: boolean) {
+        return boolean;
+    }
 
     exportSelect(label: string, labelId: string) {
         return {
@@ -83,6 +86,10 @@ export class DataWriter {
                 return [v, labelId];
             })
             return labelMeta.map((v: any) => this.exportSelect(v[0], v[1]));
+        }
+        // 复选框
+        if (field.type === 7) {
+            return this.exportBoolean(itemValue);
         }
         return null;
     }

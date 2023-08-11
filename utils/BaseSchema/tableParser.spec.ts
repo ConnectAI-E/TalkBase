@@ -61,6 +61,10 @@ const tableInfo: TableProps = {
         {
             id: 'fldueXn0k2', name: 'Height', property: {}, type: 2,
         },
+        // 单选框
+        {
+            id: '"fldueXn0k2"', name: 'is_novel', property: {}, type: 7,
+        }
     ],
 };
 
@@ -93,6 +97,10 @@ describe('BaseSchema class format', () => {
 
     it('should format number field', function () {
         expect(core.formatNumberField(tableInfo.fields[3])).toBe(`Height: number;`);
+    })
+
+    it('should format boolean field', function () {
+        expect(core.formatBooleanField(tableInfo.fields[4])).toBe(`is_novel: boolean;`);
     })
 
     it('should format title', function () {

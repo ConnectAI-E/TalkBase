@@ -86,7 +86,6 @@ export default function Chat() {
         let totalTable: any = [];
 
         const updateTableInfo = async (tableId: any, totalTable: []) => {
-            console.log(12321);
 
             const currentTableMeta = totalTable.find(({ id }: { id: any }) => id === tableId) as any;
             const currentTable = await bitable.base.getTableById(currentTableMeta?.id);
