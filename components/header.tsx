@@ -7,11 +7,13 @@ Header.propTypes = {
 };
 
 function Header() {
+
     return (
         <div
-            className="flex flex-col space-y-1 p-4 border sm:p-10 text-sm px-10">
+            className="flex flex-col space-y-1 p-4 border sm:p-10 text-sm px-10 select-none">
             <h1 className="text-sm font-semibold text-black">
                 Welcome to TalkBase!
+
             </h1>
             <p className="text-gray-500">
                 This is an{ ' ' }

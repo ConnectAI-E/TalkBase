@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import { Inter } from "next/font/google";
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -28,3 +29,13 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+export async function getServerSideProps({ locale }: { locale: any }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, [
+                'common',
+            ])),
+        },
+    };
+}
