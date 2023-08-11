@@ -1,4 +1,5 @@
 {
+  "welcome": "welcome to ",
   "thisisan":"This is an",
   "open-source":"open-source",
   "aichatbot":"AI chatbot that uses",
@@ -7,7 +8,7 @@
   "vercel":"Vercel",
   "towrite":"to write date to lark-base by natural language.",
   "project":"Project is made by",
-  "with":"with",
+  "with":"with ❤️",
   "h1": "A simple example",
   "change-locale": "Change locale to \"{{changeTo}}\"",
   "to-second-page": "To second page",
