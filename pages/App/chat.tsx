@@ -32,12 +32,13 @@ const writeData = async (input: string, tableSchema: string, setTableInfoNow: st
     return _json.res;
 };
 
-const guessTable = async (tableType: string) => {
+const guessTable = async (tableType: string,lang:string) => {
     const response = await fetch('/api/describe', {
         method: 'POST',
         body: JSON.stringify(
             {
                 tsString: tableType,
+                lang: lang,
             },
         ),
     });
@@ -45,12 +46,13 @@ const guessTable = async (tableType: string) => {
     return _json.result;
 };
 
-const adviceTableInput = async (tableType: string) => {
+const adviceTableInput = async (tableType: string,lang: string) => {
     const response = await fetch('/api/advice', {
         method: 'POST',
         body: JSON.stringify(
             {
                 tsString: tableType,
+                lang: lang,
             },
         ),
     });
@@ -100,13 +102,16 @@ export default function Chat() {
             const _baseTable = new TableParser(tableInfo);
             console.log(_baseTable.typeStr);
 
+            const nowLang = i18n.language === 'en' ? 'en' : 'zh';
+
+            console.log(nowLang);
             setTableSchema(_baseTable.typeStr);
-            const tableDescription = await guessTable(_baseTable.typeStr);
+            const tableDescription = await guessTable(_baseTable.typeStr,nowLang);
 
             console.log(tableDescription);
             setTableDescription(tableDescription);
 
-            const tableAdvice = await adviceTableInput(_baseTable.typeStr);
+            const tableAdvice = await adviceTableInput(_baseTable.typeStr, nowLang);
             console.log(tableAdvice);
             setTableAdvice(tableAdvice);
         };
