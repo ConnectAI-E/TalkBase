@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from 'react';
 import clsx from 'clsx';
-import {GithubIcon, LoadingCircle, SendIcon} from '../../utils/icons';
+import {LanguageIcon, LoadingCircle, SendIcon} from '../../utils/icons';
 import Textarea from 'react-textarea-autosize';
 import {githubUrl} from '../../constant';
 import {DataWriter} from '../../utils/BaseSchema/dataWriter';
@@ -9,6 +9,9 @@ import {toast} from 'sonner';
 import Footer from '../../components/footer';
 import Header from '../../components/header';
 import {debounceWarp} from '../../utils/tool';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+
+import {useTranslation} from 'next-i18next';
 
 const writeData = async (input: string, tableSchema: string, setTableInfoNow: string) => {
     const response = await fetch('/api/table', {
@@ -29,12 +32,13 @@ const writeData = async (input: string, tableSchema: string, setTableInfoNow: st
     return _json.res;
 };
 
-const guessTable = async (tableType: string) => {
+const guessTable = async (tableType: string,lang:string) => {
     const response = await fetch('/api/describe', {
         method: 'POST',
         body: JSON.stringify(
             {
                 tsString: tableType,
+                lang: lang,
             },
         ),
     });
@@ -42,12 +46,13 @@ const guessTable = async (tableType: string) => {
     return _json.result;
 };
 
-const adviceTableInput = async (tableType: string) => {
+const adviceTableInput = async (tableType: string,lang: string) => {
     const response = await fetch('/api/advice', {
         method: 'POST',
         body: JSON.stringify(
             {
                 tsString: tableType,
+                lang: lang,
             },
         ),
     });
@@ -97,17 +102,20 @@ export default function Chat() {
             const _baseTable = new TableParser(tableInfo);
             console.log(_baseTable.typeStr);
 
+            const nowLang = i18n.language === 'en' ? 'en' : 'zh';
+
+            console.log(nowLang);
             setTableSchema(_baseTable.typeStr);
-            const tableDescription = await guessTable(_baseTable.typeStr);
+            const tableDescription = await guessTable(_baseTable.typeStr,nowLang);
 
             console.log(tableDescription);
             setTableDescription(tableDescription);
 
-            const tableAdvice = await adviceTableInput(_baseTable.typeStr);
+            const tableAdvice = await adviceTableInput(_baseTable.typeStr, nowLang);
             console.log(tableAdvice);
             setTableAdvice(tableAdvice);
         };
-        const updateInfoDebounce =debounceWarp(updateTableInfo, 1800);
+        const updateInfoDebounce = debounceWarp(updateTableInfo, 1800);
 
         Promise.all([bitable.base.getTableMetaList(), bitable.base.getSelection()])
             .then(async ([metaList, selection]) => {
@@ -158,20 +166,23 @@ export default function Chat() {
         setIsLoading(false);
     };
 
-
+    const { t, i18n } = useTranslation('common');
+    const changeI18n = () => {
+        i18n.changeLanguage(i18n.language === 'en' ? 'zh' : 'en');
+    }
     return (
         <div className="flex flex-col items-center justify-between ">
-            <div className="absolute top-5 hidden w-full justify-end px-5 sm:flex">
-                <a
-                    href={ githubUrl }
-                    target="_blank"
-                    className="rounded-lg p-2 transition-colors duration-200 hover:bg-stone-100 sm:bottom-auto"
+            <div className="absolute top-5 w-full justify-end px-5 flex">
+                <div
+                    onClick={ changeI18n }
+                    className="rounded-lg p-2 transition-colors duration-200 hover:bg-stone-100 sm:bottom-auto cursor-pointer"
                 >
-                    <GithubIcon/>
-                </a>
+                    <LanguageIcon/>
+                </div>
             </div>
-            <div className="mx-2  max-w-screen-md rounded-md  w-80%">
+            <div className="mx-2  max-w-screen-md rounded-md pt-2 w-80%">
                 <Header/>
+                {/* <div>  { t('h1') }</div> */}
                 <div
                     className="flex flex-col space-y-1 border-t border-gray-200 bg-gray-50 p-3 sm:p-10">
                     <div
@@ -241,3 +252,5 @@ export default function Chat() {
         </div>
     );
 }
+
+

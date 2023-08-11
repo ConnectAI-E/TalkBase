@@ -1,0 +1,35 @@
+{
+  "welcome": "欢迎使用 ",
+  "thisisan": "这是一个",
+  "open-source": "开源的",
+  "aichatbot": "将自然语言录入表格的探索性项目，",
+  "typechat": "由TypeChat",
+  "and": "和",
+  "vercel": "Vercel AI",
+  "towrite": "内核驱动",
+  "project": "项目由",
+  "with": "开源社区发起",
+  "h1": "一个简单的示例",
+  "change-locale": "切换语言环境到 \"{{changeTo}}\"",
+  "to-second-page": "前往第二页",
+  "error-with-status": "服务器发生了一个{{statusCode}}错误",
+  "error-without-status": "服务器发生了一个错误",
+  "title": "首页 | next-i18next",
+  "blog": {
+    "appDir": {
+      "question": "你是否在使用新的 Next.js 13 应用程序目录？",
+      "answer": "那么可以查看<1>这篇博文</1>。",
+      "link": "https://locize.com/blog/next-13-app-dir-i18n/"
+    },
+    "optimized": {
+      "question": "你想释放一些超能力来进行所有侧面优化的翻译吗？",
+      "answer": "那么可以查看<1>这篇博文</1>。",
+      "link": "https://locize.com/blog/next-i18next/"
+    },
+    "ssg": {
+      "question": "你想使用 SSG（静态导出）吗？",
+      "answer": "那么可以查看<1>这篇博文</1>。",
+      "link": "https://locize.com/blog/next-i18n-static/"
+    }
+  }
+}

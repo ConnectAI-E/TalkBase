@@ -1,50 +1,52 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {githubUrl} from '../constant';
+import {useTranslation} from 'next-i18next';
 
 Header.propTypes = {
-
 };
 
 function Header() {
+
+    const { t, i18n } = useTranslation('common');
     return (
         <div
-            className="flex flex-col space-y-1 p-4 border sm:p-10 text-sm px-10">
+            className="flex flex-col space-y-1 p-4 border sm:p-10 text-sm px-10 select-none">
             <h1 className="text-sm font-semibold text-black">
-                Welcome to TalkBase!
+                {t('welcome')} TalkBase!
             </h1>
             <p className="text-gray-500">
-                This is an{ ' ' }
+                {t('thisisan')}{ ' ' }
                 <a
                     href={ githubUrl }
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-medium underline underline-offset-4 transition-colors hover:text-black"
                 >
-                    open-source
+                    {t('open-source')}
                 </a>{ ' ' }
-                AI chatbot that uses{ ' ' }
+                {t('aichatbot')}{ ' ' }
                 <a
                     href="https://github.com/microsoft/TypeChat"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-medium underline underline-offset-4 transition-colors hover:text-black"
                 >
-                    TypeChat
+                    {t('typechat')}
                 </a>{ ' ' }
-                and{ ' ' }
+                {t('and')}{ ' ' }
                 <a
                     href="https://sdk.vercel.ai/docs"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-medium underline underline-offset-4 transition-colors hover:text-black"
                 >
-                    Vercel
+                    {t('vercel')}
                 </a>{ ' ' }
-                to write date to lark-base by natural language.
+                {t('towrite')}
             </p>
             <p>
-                Project is made by { ' ' }
+                {t('project')} { ' ' }
                 <a
                     href="https://github.com/ConnectAI-E"
                     target="_blank"
@@ -52,7 +54,7 @@ function Header() {
                     className="font-medium underline underline-offset-4 transition-colors hover:text-black"
                 >
                     ConnectAI
-                </a>{ ' ' } with ❤️ .
+                </a>{ ' ' } {t('with')} .
 
             </p>
         </div>
