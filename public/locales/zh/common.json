@@ -1,4 +1,13 @@
 {
+  "thisisan": "这是一个",
+  "open-source": "开源的",
+  "aichatbot": "使用人工智能的聊天机器人，",
+  "typechat": "TypeChat",
+  "and": "和",
+  "vercel": "Vercel",
+  "towrite": "通过自然语言将数据写入Lark表格。",
+  "project": "项目由",
+  "with": "制作",
   "h1": "一个简单的示例",
   "change-locale": "切换语言环境到 \"{{changeTo}}\"",
   "to-second-page": "前往第二页",

@@ -177,7 +177,7 @@ export default function Chat() {
             </div>
             <div className="mx-2  max-w-screen-md rounded-md pt-2 w-80%">
                 <Header/>
-                <div>  { t('h1') }</div>
+                {/* <div>  { t('h1') }</div> */}
                 <div
                     className="flex flex-col space-y-1 border-t border-gray-200 bg-gray-50 p-3 sm:p-10">
                     <div
