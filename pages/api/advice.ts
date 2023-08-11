@@ -70,7 +70,6 @@ const getTableAdvice = async (tsString: string, lang :string) => {
                 content: ifZh ? 'According to the following type file structure, after judging the function of this form, assuming the appropriate situation, use human natural language to give an example input, be natural  and no more than 20 words. 记住，用中文回答 ' : 'According to the following type file structure, after judging the function of this form, assuming the appropriate situation, use human natural language to give an example input, be natural  and no more than 20 words.Must Answer in English',
             },
             { role: 'user', content: ifZh ? generateZhTemplate(tsString) : generateTemplate(tsString) }] as any;
-    console.log(messages);
     const chatCompletion = await openai.createChatCompletion({
         model: 'gpt-3.5-turbo',
         stream: false,
@@ -83,7 +82,7 @@ const getTableAdvice = async (tsString: string, lang :string) => {
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { tsString,lang } = JSON.parse(req.body) as Prop;
     const result = await getTableAdvice(tsString,lang as string);
-    console.log(result);
+    // console.log(result);
     res.status(200).send({ result });
 };
 

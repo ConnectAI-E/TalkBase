@@ -215,8 +215,8 @@ export default function Chat() {
                                 e.preventDefault();
                                 setInput(tableAdvice);
                             }
-                            // enter 就发送
-                            if (e.key === 'Enter') {
+                            // 同事按按住command+enter 就发送
+                            if (e.key === 'Enter' && e.metaKey) {
                                 e.preventDefault();
                                 handleSubmit();
                             }
