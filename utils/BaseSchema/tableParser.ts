@@ -60,11 +60,13 @@ export class TableParser {
         return `${ iBaseFieldMeta.name }: boolean;`;
     }
 
+
     formatField(field: IBaseFieldMeta) {
         switch (field.type) {
             case 1:
                 return this.formatStringField(field);
-            case 2:
+            case 2 :
+            case 99004:
                 return this.formatNumberField(field);
             case 3:
                 return this.formatSelectField(field);

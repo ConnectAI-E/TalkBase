@@ -64,7 +64,9 @@ const tableInfo: TableProps = {
         // 单选框
         {
             id: '"fldueXn0k2"', name: 'is_novel', property: {}, type: 7,
-        }
+        },
+        //评分
+        { id: 'fldueXn0k2', name: 'score', property: {}, type: 99004 }
     ],
 };
 
@@ -97,10 +99,14 @@ describe('BaseSchema class format', () => {
 
     it('should format number field', function () {
         expect(core.formatNumberField(tableInfo.fields[3])).toBe(`Height: number;`);
-    })
+    });
 
     it('should format boolean field', function () {
         expect(core.formatBooleanField(tableInfo.fields[4])).toBe(`is_novel: boolean;`);
+    });
+
+    it('should format grade fields', function () {
+        expect(core.formatNumberField(tableInfo.fields[5])).toBe(`score: number;`);
     })
 
     it('should format title', function () {

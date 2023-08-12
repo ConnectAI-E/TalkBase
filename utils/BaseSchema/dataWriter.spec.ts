@@ -63,7 +63,9 @@ const tableInfo: TableProps = {
         // 复选框
         {
             id: 'fldueXn0k2', name: 'is_novel', property: {}, type: 7,
-        }
+        },
+        { id: 'fldueXn0k2', name: 'score', property: {}, type: 99004 },
+
     ],
 };
 
@@ -71,6 +73,7 @@ const resultExample = { content: 'TypeChat is awesome!', sentiment: 'positive' }
 const resultExample2 = { content: '我喜欢吃苹果和橘子', fruit: ['苹果', '橘子'] };
 const resultExample3 = { Height: 180 };
 const resultExample4 = { is_novel: true };
+const resultExample5 = { score: 4 };
 
 describe('dataWriter init', () => {
     it('should init', function () {
@@ -122,22 +125,29 @@ describe('parse multi select', () => {
             {
                 id: 'optdh2v28L',
                 text: '橘子',
-            }
+            },
         ]);
     });
-})
+});
 
 describe('parse number', () => {
     const core = new DataWriter(tableInfo);
     it('should parse number field', () => {
         expect(core.load(resultExample3).parseOneField(tableInfo.fields[3])).toEqual(180);
     });
-})
+});
 
 describe('parse boolean', () => {
     const core = new DataWriter(tableInfo);
     it('should parse boolean field', () => {
         expect(core.load(resultExample4).parseOneField(tableInfo.fields[4])).toEqual(true);
+    });
+});
+
+describe('parse score', () => {
+    const core = new DataWriter(tableInfo);
+    it('should parse score field', () => {
+        expect(core.load(resultExample5).parseOneField(tableInfo.fields[5])).toEqual(4);
     });
 })
 describe('parse all type', () => {
@@ -145,14 +155,14 @@ describe('parse all type', () => {
     it('should parse all', () => {
         expect(core.load(resultExample).recordFormat).toEqual(
             {
-                ["fld8t4vEEN"] : {
+                ['fld8t4vEEN']: {
                     type: 'text',
                     text: 'TypeChat is awesome!',
                 },
-                ["fld1g8LMRX"] : {
-                    id:'opt3UsIu8H',
+                ['fld1g8LMRX']: {
+                    id: 'opt3UsIu8H',
                     text: 'positive',
-                }
-            })
+                },
+            });
     });
 });

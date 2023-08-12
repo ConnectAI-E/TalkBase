@@ -28,6 +28,7 @@ export class DataWriter {
     exportNumber(number: number) {
         return number;
     }
+
     exportBoolean(boolean: boolean) {
         return boolean;
     }
@@ -53,7 +54,7 @@ export class DataWriter {
             return null;
         }
         const labelId = option.id;
-        return labelId
+        return labelId;
     }
 
     getItem(field: IBaseFieldMeta['name']) {
@@ -62,7 +63,7 @@ export class DataWriter {
 
 
     parseOneField(field: IBaseFieldMeta) {
-        const itemValue = this.getItem(field.name) as any
+        const itemValue = this.getItem(field.name) as any;
         if (!itemValue) {
             return null;
         }
@@ -71,7 +72,7 @@ export class DataWriter {
             return this.exportText(itemValue);
         }
         //数字
-        if (field.type === 2) {
+        if (field.type === 2 || field.type === 99004) {
             return this.exportNumber(itemValue);
         }
         //单选
@@ -84,7 +85,7 @@ export class DataWriter {
             const labelMeta = itemValue.map((v: string) => {
                 const labelId = this.findSelectLabelId(field, v);
                 return [v, labelId];
-            })
+            });
             return labelMeta.map((v: any) => this.exportSelect(v[0], v[1]));
         }
         // 复选框
@@ -95,16 +96,15 @@ export class DataWriter {
     }
 
 
-
     get recordFormat() {
         const fields = this.tableInfo.fields;
-        const res={} as any
+        const res = {} as any;
         fields.forEach(f => {
             const parsed = this.parseOneField(f);
             if (parsed) {
                 res[f.id] = parsed;
             }
-        })
+        });
         return res;
     }
 
