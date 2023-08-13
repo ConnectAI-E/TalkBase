@@ -12,7 +12,7 @@
   <a href="https://github.com/connectai-e/Chat-Calculator/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/connectai-e/Chat-Calculator?label=license&logo=github&color=f80&logoColor=fff" alt="License" />
   </a>
-  <a href="https://github.com/connectai-e/Chat-Calculator"><img src="https://img.shields.io/github/stars/connectai-e/Chat-Calculator?style=social" alt="Chat-Calc's GitHub repo"></a>
+  <a href="https://github.com/connectai-e/talkbase"><img src="https://img.shields.io/github/stars/connectai-e/talkbase?style=social" alt="talkbase's GitHub repo"></a>
 </p>
 
 
