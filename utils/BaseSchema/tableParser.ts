@@ -1,103 +1,98 @@
-import {IBaseFieldMeta} from '@base-open/web-api';
-import {TableProps} from './table';
-
+import { IBaseFieldMeta } from "@base-open/web-api";
+import { TableProps } from "./table";
 
 export class TableParser {
-    table: TableProps;
+  table: TableProps;
 
-    constructor(tableInfo: TableProps) {
-        this.table = tableInfo;
+  constructor(tableInfo: TableProps) {
+    this.table = tableInfo;
+  }
+
+  get title() {
+    return this.table.name;
+  }
+
+  get fieldNames() {
+    return this.table.fields.map((f) => f.name);
+  }
+
+  formatStringField(field: IBaseFieldMeta) {
+    return `${field.name}: string;`;
+  }
+
+  formatSelectField(field: IBaseFieldMeta) {
+    const property = field.property as any;
+    if (!property || !property?.options) {
+      {
+        return "";
+      }
     }
-
-    get title() {
-        return this.table.name;
+    const options = property.options as any;
+    if (!options) {
+      return "";
     }
+    const optionsStr = options.map((o: any) => `"${o.name}"`).join(" | ");
+    return `${field.name}: ${optionsStr};`;
+  }
 
-
-    get fieldNames() {
-        return this.table.fields.map(f => f.name);
+  formatMultiSelectField(field: IBaseFieldMeta) {
+    const property = field.property as any;
+    if (!property || !property?.options) {
+      {
+        return "";
+      }
     }
-
-    formatStringField(field: IBaseFieldMeta) {
-        return `${ field.name }: string;`;
+    const options = property.options as any;
+    if (!options) {
+      return "";
     }
+    const optionsStr = options.map((o: any) => `"${o.name}"`).join(" | ");
+    return `${field.name}: (${optionsStr})[];`;
+  }
 
-    formatSelectField(field: IBaseFieldMeta) {
-        const property = field.property as any;
-        if (!property || !property?.options) {
-            {
-                return '';
-            }
-        }
-        const options = property.options as any;
-        if (!options) {
-            return '';
-        }
-        const optionsStr = options.map((o: any) => `"${ o.name }"`).join(' | ');
-        return `${ field.name }: ${ optionsStr };`;
+  formatNumberField(iBaseFieldMeta: IBaseFieldMeta) {
+    return `${iBaseFieldMeta.name}: number;`;
+  }
+
+  formatBooleanField(iBaseFieldMeta: IBaseFieldMeta) {
+    return `${iBaseFieldMeta.name}: boolean;`;
+  }
+
+  formatField(field: IBaseFieldMeta) {
+    switch (field.type) {
+      case 1:
+        return this.formatStringField(field);
+      case 2:
+      case 99004: // 评分
+      case 99003: // 货币
+      case 99002: // 进度
+      case 13: // 电话
+        return this.formatNumberField(field);
+      case 3:
+        return this.formatSelectField(field);
+      case 4:
+        return this.formatMultiSelectField(field);
+      case 7:
+        return this.formatBooleanField(field);
+      default:
+        return "";
     }
+  }
 
-    formatMultiSelectField(field: IBaseFieldMeta) {
-        const property = field.property as any;
-        if (!property || !property?.options) {
-            {
-                return '';
-            }
-        }
-        const options = property.options as any;
-        if (!options) {
-            return '';
-        }
-        const optionsStr = options.map((o: any) => `"${ o.name }"`).join(' | ');
-        return `${ field.name }: (${ optionsStr })[];`;
-    }
+  formatTitle() {
+    return `export interface ${this.title} {`;
+  }
 
-    formatNumberField(iBaseFieldMeta: IBaseFieldMeta) {
-        return `${ iBaseFieldMeta.name }: number;`;
-    }
+  formatEnd() {
+    return `}`;
+  }
 
-    formatBooleanField(iBaseFieldMeta: IBaseFieldMeta) {
-        return `${ iBaseFieldMeta.name }: boolean;`;
-    }
+  private formatAll() {
+    const fields = this.table.fields.map((f) => this.formatField(f)).join("\n");
+    return `${this.formatTitle()}\n${fields}\n${this.formatEnd()}`;
+  }
 
-
-    formatField(field: IBaseFieldMeta) {
-        switch (field.type) {
-            case 1:
-                return this.formatStringField(field);
-            case 2 :
-            case 99004: // 评分
-            case 99003: // 货币
-            case 99002 : // 进度
-                return this.formatNumberField(field);
-            case 3:
-                return this.formatSelectField(field);
-            case 4:
-                return this.formatMultiSelectField(field);
-            case 7:
-                return this.formatBooleanField(field);
-            default:
-                return '';
-        }
-    }
-
-
-    formatTitle() {
-        return `export interface ${ this.title } {`;
-    }
-
-    formatEnd() {
-        return `}`;
-    }
-
-    private formatAll() {
-        const fields = this.table.fields.map(f => this.formatField(f)).join('\n');
-        return `${ this.formatTitle() }\n${ fields }\n${ this.formatEnd() }`;
-    }
-
-    get typeStr() {
-        return this.formatAll();
-    }
-
-
+  get typeStr() {
+    return this.formatAll();
+  }
 }
