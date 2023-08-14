@@ -72,7 +72,7 @@ export class DataWriter {
             return this.exportText(itemValue);
         }
         //数字
-        if (field.type === 2 || field.type === 99004 || field.type === 99003 || field.type === 99002) {
+        if (field.type === 2 || field.type === 99004 || field.type === 99003 || field.type === 99002 || field.type === 99001) {
             return this.exportNumber(itemValue);
         }
         //单选

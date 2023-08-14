@@ -66,7 +66,9 @@ const tableInfo: TableProps = {
             id: '"fldueXn0k2"', name: 'is_novel', property: {}, type: 7,
         },
         //评分
-        { id: 'fldueXn0k2', name: 'score', property: {}, type: 99004 }
+        { id: 'fldueXn0k2', name: 'score', property: {}, type: 99004 },
+        // 电话
+        { id: 'fldueXn0k2', name: 'phone', property: {}, type: 99001 },
     ],
 };
 
@@ -107,6 +109,10 @@ describe('BaseSchema class format', () => {
 
     it('should format grade fields', function () {
         expect(core.formatNumberField(tableInfo.fields[5])).toBe(`score: number;`);
+    })
+
+    it('should format phone fields', function () {
+        expect(core.formatNumberField(tableInfo.fields[6])).toBe(`phone: number;`);
     })
 
     it('should format title', function () {

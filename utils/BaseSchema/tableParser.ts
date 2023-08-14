@@ -69,6 +69,7 @@ export class TableParser {
             case 99004: // 评分
             case 99003: // 货币
             case 99002 : // 进度
+            case 99001 : // 电话
                 return this.formatNumberField(field);
             case 3:
                 return this.formatSelectField(field);

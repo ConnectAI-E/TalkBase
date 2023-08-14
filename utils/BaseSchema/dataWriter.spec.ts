@@ -65,7 +65,8 @@ const tableInfo: TableProps = {
             id: 'fldueXn0k2', name: 'is_novel', property: {}, type: 7,
         },
         { id: 'fldueXn0k2', name: 'score', property: {}, type: 99004 },
-
+        // 电话
+        { id: 'fldueXn0k2', name: 'phone', property: {}, type: 99001 },
     ],
 };
 
@@ -74,6 +75,7 @@ const resultExample2 = { content: '我喜欢吃苹果和橘子', fruit: ['苹果
 const resultExample3 = { Height: 180 };
 const resultExample4 = { is_novel: true };
 const resultExample5 = { score: 4 };
+const resultExample6 = { phone: 13800000000 };
 
 describe('dataWriter init', () => {
     it('should init', function () {
@@ -148,6 +150,12 @@ describe('parse score', () => {
     const core = new DataWriter(tableInfo);
     it('should parse score field', () => {
         expect(core.load(resultExample5).parseOneField(tableInfo.fields[5])).toEqual(4);
+    });
+})
+describe('parse phone', () => {
+    const core = new DataWriter(tableInfo);
+    it('should parse phone field', () => {
+        expect(core.load(resultExample6).parseOneField(tableInfo.fields[6])).toEqual(4);
     });
 })
 describe('parse all type', () => {
