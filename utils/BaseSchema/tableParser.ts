@@ -53,6 +53,9 @@ export class TableParser {
   formatNumberField(iBaseFieldMeta: IBaseFieldMeta) {
     return `${iBaseFieldMeta.name}: number;`;
   }
+  formatPhoneField(iBaseFieldMeta: IBaseFieldMeta) {
+    return `${iBaseFieldMeta.name}: string;`;
+  }
 
   formatBooleanField(iBaseFieldMeta: IBaseFieldMeta) {
     return `${iBaseFieldMeta.name}: boolean;`;
@@ -67,7 +70,7 @@ export class TableParser {
       case 99003: // 货币
       case 99002: // 进度
       case 13: // 电话
-        return this.formatNumberField(field);
+        return this.formatPhoneField(field);
       case 3:
         return this.formatSelectField(field);
       case 4:

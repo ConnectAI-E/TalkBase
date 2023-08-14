@@ -91,7 +91,7 @@ const resultExample2 = {
 const resultExample3 = { Height: 180 };
 const resultExample4 = { is_novel: true };
 const resultExample5 = { score: 4 };
-const resultExample6 = { phone: 13800000000 };
+const resultExample6 = { phone: "13800000000" };
 
 describe("dataWriter init", () => {
   it("should init", function () {
@@ -186,7 +186,7 @@ describe("parse phone", () => {
   it("should parse phone field", () => {
     expect(
       core.load(resultExample6).parseOneField(tableInfo.fields[6]),
-    ).toEqual(4);
+    ).toEqual("13800000000");
   });
 });
 describe("parse all type", () => {

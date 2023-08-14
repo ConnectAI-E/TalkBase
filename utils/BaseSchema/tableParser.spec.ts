@@ -128,7 +128,7 @@ describe("BaseSchema class format", () => {
   });
 
   it("should format phone fields", function () {
-    expect(core.formatNumberField(tableInfo.fields[6])).toBe(`phone: number;`);
+    expect(core.formatPhoneField(tableInfo.fields[6])).toBe(`phone: string;`);
   });
 
   it("should format title", function () {
