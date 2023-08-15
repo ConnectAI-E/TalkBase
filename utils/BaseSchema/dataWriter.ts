@@ -1,6 +1,7 @@
 import { type } from "os";
 import { TableProps } from "./table";
 import { IBaseFieldMeta } from "@base-open/web-api";
+import { text } from "stream/consumers";
 
 export class DataWriter {
   tableInfo: TableProps;
@@ -26,10 +27,10 @@ export class DataWriter {
     };
   }
 
-  exportUrl(url: string) {
+  exportUrl(text: string) {
     return {
-      type: "Url",
-      url: url,
+      type: "url",
+      text: text,
     };
   }
 
