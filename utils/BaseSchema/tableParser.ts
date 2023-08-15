@@ -57,6 +57,10 @@ export class TableParser {
     return `${iBaseFieldMeta.name}: string;`;
   }
 
+  formatUrlField(iBaseFieldMeta: IBaseFieldMeta) {
+    return `${iBaseFieldMeta.name}: string;`;
+  }
+
   formatBooleanField(iBaseFieldMeta: IBaseFieldMeta) {
     return `${iBaseFieldMeta.name}: boolean;`;
   }
@@ -71,6 +75,8 @@ export class TableParser {
       case 99002: // 进度
       case 13: // 电话
         return this.formatPhoneField(field);
+      case 15:
+        return this.formatUrlField(field);
       case 3:
         return this.formatSelectField(field);
       case 4:

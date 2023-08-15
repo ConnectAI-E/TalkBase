@@ -79,6 +79,8 @@ const tableInfo: TableProps = {
     { id: "fldueXn0k2", name: "score", property: {}, type: 99004 },
     // 电话
     { id: "fldueXn0k2", name: "phone", property: {}, type: 13 },
+    // 超链接
+    { id: "fldueXn0k2", name: "url", property: {}, type: 15 },
   ],
 };
 
@@ -129,6 +131,10 @@ describe("BaseSchema class format", () => {
 
   it("should format phone fields", function () {
     expect(core.formatPhoneField(tableInfo.fields[6])).toBe(`phone: string;`);
+  });
+
+  it("should format url fields", function () {
+    expect(core.formatUrlField(tableInfo.fields[7])).toBe(`url: string;`);
   });
 
   it("should format title", function () {
