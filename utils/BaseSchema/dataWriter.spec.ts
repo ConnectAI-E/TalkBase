@@ -197,7 +197,10 @@ describe("parse url", () => {
   it("should parse url field", () => {
     expect(
       core.load(resultExample7).parseOneField(tableInfo.fields[7]),
-    ).toEqual("https://www.baidu.com");
+    ).toEqual({
+      type: "url",
+      text: "https://www.baidu.com",
+    });
   });
 });
 describe("parse all type", () => {

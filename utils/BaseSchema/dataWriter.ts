@@ -1,5 +1,7 @@
+import { type } from "os";
 import { TableProps } from "./table";
 import { IBaseFieldMeta } from "@base-open/web-api";
+import { text } from "stream/consumers";
 
 export class DataWriter {
   tableInfo: TableProps;
@@ -21,6 +23,13 @@ export class DataWriter {
   exportText(text: string) {
     return {
       type: "text",
+      text: text,
+    };
+  }
+
+  exportUrl(text: string) {
+    return {
+      type: "url",
       text: text,
     };
   }
@@ -103,7 +112,7 @@ export class DataWriter {
     }
     // url
     if (field.type === 15) {
-      return this.exportString(itemValue);
+      return this.exportUrl(itemValue);
     }
     return null;
   }
