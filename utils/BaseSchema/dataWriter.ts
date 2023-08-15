@@ -29,6 +29,10 @@ export class DataWriter {
     return number;
   }
 
+  exportString(string: string) {
+    return string;
+  }
+
   exportBoolean(boolean: boolean) {
     return boolean;
   }
@@ -96,6 +100,10 @@ export class DataWriter {
     // 复选框
     if (field.type === 7) {
       return this.exportBoolean(itemValue);
+    }
+    // url
+    if (field.type === 15) {
+      return this.exportString(itemValue);
     }
     return null;
   }
