@@ -1,3 +1,4 @@
+import { type } from "os";
 import { TableProps } from "./table";
 import { IBaseFieldMeta } from "@base-open/web-api";
 
@@ -22,6 +23,13 @@ export class DataWriter {
     return {
       type: "text",
       text: text,
+    };
+  }
+
+  exportUrl(url: string) {
+    return {
+      type: "Url",
+      url: url,
     };
   }
 
@@ -103,7 +111,7 @@ export class DataWriter {
     }
     // url
     if (field.type === 15) {
-      return this.exportString(itemValue);
+      return this.exportUrl(itemValue);
     }
     return null;
   }
