@@ -4,7 +4,6 @@
 <br/>
 <br/>
 
-
 <p align="center">
     <a href="https://github.com/connectai-e/awesome-basescript">
     <img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="License" />
@@ -14,7 +13,6 @@
   </a>
   <a href="https://github.com/connectai-e/talkbase"><img src="https://img.shields.io/github/stars/connectai-e/talkbase?style=social" alt="talkbase's GitHub repo"></a>
 </p>
-
 
 <p align="center">
   <a href="#introduction"><strong>Introduction</strong></a> ·
@@ -26,37 +24,38 @@
 </p>
 <br/>
 
+<p align="center">
+  <a href="#"><strong>Introduction</strong></a> ·
+  <a href="./README_CN.md"><strong>Deploy Your Own</strong></a>
+</p>
+<br/>
+
 ## Introduction
 
 TalkBase is an open-source AI chatbot that uses [TypeChat](https://github.com/microsoft/TypeChat) and the [Vercel AI SDK](https://sdk.vercel.ai/docs) to interact with natural language.
 
-
 🐵 Easily enter data by natural language , with the requirements table field meta and descriptions.
 ![show_example](https://github.com/ConnectAI-E/TalkBase/assets/50035229/d26bcf56-d006-4f24-b84b-7480b01eff84)
 
-
 🐵 Only English？ no! any langguage such as Chinese
 ![talkbasegif](https://github.com/ConnectAI-E/Chat-Base/assets/110169811/3f69a25a-f66b-450a-a478-1986debd37b3)
-
 
 🙈 automatically describe the purpose of the table and give text suggestions for entering data
 ![quickShow](https://github.com/ConnectAI-E/TalkBase/assets/50035229/10ddf80a-c504-4c42-b516-d70cf9e50268)
 
 ## Quick Start
 
-1️⃣  open the grayscale qualification for base extension
+1️⃣ open the grayscale qualification for base extension
 
 https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=c55n4142-fce8-4792-b851-f92c9c7d8300
-  
-2️⃣  copy talk-base online link to the extension script address 
+
+2️⃣ copy talk-base online link to the extension script address
+
 ```
 https://talkbase.connectai.site/
 ```
+
 3️⃣ start to chat-base ~
-
-
-
-
 
 ## Dev Local
 
@@ -64,14 +63,16 @@ To set up talkBase locally, you'll need to clone the repository and set up the f
 
 - `OPENAI_API_KEY` – your OpenAI API key (you can get one [here](https://platform.openai.com/account/api-keys))
 
-
 1️⃣ clone deme
+
 ```
 git clone https://github.com/ConnectAI-E/BaseScript-LinkPreview
 pnpm install
 pnpm dev
 ```
+
 2️⃣ copy talkbase dev link to the extension script address
+
 ```
 http://localhost:5173/
 ```
@@ -81,10 +82,8 @@ http://localhost:5173/
 You can deploy your own version of TalkBase with one-click:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ConnectAI-E/TalkBase&env=OPENAI_API_KEY&project-name=chat-calc&repository-name=Chat-Base)
+
 </details>
-
-
-
 
 ## Tech Stack
 
