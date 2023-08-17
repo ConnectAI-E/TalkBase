@@ -25,8 +25,8 @@
 <br/>
 
 <p align="center">
-  <a href="#"><strong>Introduction</strong></a> ·
-  <a href="./README_CN.md"><strong>Deploy Your Own</strong></a>
+  <a href="./README.md"><strong>English</strong></a> ·
+  <a href="./README_CN.md"><strong>简体中文</strong></a>
 </p>
 <br/>
 
