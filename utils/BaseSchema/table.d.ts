@@ -1,6 +1,6 @@
-import {IBaseFieldMeta} from '@base-open/web-api';
+import {IFieldMeta} from '@lark-base-open/js-sdk';
 
 export interface TableProps {
     name: string;
-    fields: IBaseFieldMeta[];
+    fields: IFieldMeta[];
 }

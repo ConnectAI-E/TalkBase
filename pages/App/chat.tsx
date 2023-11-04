@@ -66,7 +66,7 @@ export default function Chat() {
     const inputRef = useRef<HTMLTextAreaElement>(null);
     const [bitable, setBitable] = useState<any>();
     useEffect(() => {
-        import('@base-open/web-api').then(res => {
+        import('@lark-base-open/js-sdk').then(res => {
             setBitable(res.bitable);
         });
     }, []);
@@ -159,6 +159,7 @@ export default function Chat() {
             currentTable.addRecord({
                 fields: record.load(_json).recordFormat,
             });
+            console.log(record.load(_json).recordFormat);
         } catch (e) {
             console.log(e);
         }

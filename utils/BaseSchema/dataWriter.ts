@@ -1,6 +1,6 @@
 import { type } from "os";
 import { TableProps } from "./table";
-import { IBaseFieldMeta } from "@base-open/web-api";
+import { IFieldMeta } from "@lark-base-open/js-sdk";
 import { text } from "stream/consumers";
 
 export class DataWriter {
@@ -53,7 +53,7 @@ export class DataWriter {
     };
   }
 
-  findSelectLabelId(field: IBaseFieldMeta, label: string) {
+  findSelectLabelId(field: IFieldMeta, label: string) {
     const property = field.property as any;
     if (!property || !property?.options) {
       return null;
@@ -70,11 +70,11 @@ export class DataWriter {
     return labelId;
   }
 
-  getItem(field: IBaseFieldMeta["name"]) {
+  getItem(field: IFieldMeta["name"]) {
     return this._result[field];
   }
 
-  parseOneField(field: IBaseFieldMeta) {
+  parseOneField(field: IFieldMeta) {
     const itemValue = this.getItem(field.name) as any;
     if (!itemValue) {
       return null;

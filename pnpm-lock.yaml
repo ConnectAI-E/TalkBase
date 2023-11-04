@@ -8,6 +8,9 @@ dependencies:
   '@base-open/web-api':
     specifier: https://lf3-static.bytednsdoc.com/obj/eden-cn/jjjpceh7nulojvhj/base-open-web-api-0.2.0-alpha.11.tgz
     version: '@lf3-static.bytednsdoc.com/obj/eden-cn/jjjpceh7nulojvhj/base-open-web-api-0.2.0-alpha.11.tgz'
+  '@lark-base-open/js-sdk':
+    specifier: ^0.3.4
+    version: 0.3.4
   '@types/node':
     specifier: 20.3.1
     version: 20.3.1
@@ -391,6 +394,10 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
+
+  /@lark-base-open/js-sdk@0.3.4:
+    resolution: {integrity: sha512-akJA3mPbBRqcmWLb4wJZSmnM9F8GjXJolWrfn6YRLVfXOd2udyvw9q+Fj5kZaYv0W1tNvseDojZ6I3EhsAOboQ==}
+    dev: false
 
   /@next/env@13.4.9:
     resolution: {integrity: sha512-vuDRK05BOKfmoBYLNi2cujG2jrYbEod/ubSSyqgmEx9n/W3eZaJQdRNhTfumO+qmq/QTzLurW487n/PM/fHOkw==}
@@ -3559,7 +3566,7 @@ packages:
     dev: false
 
   '@lf3-static.bytednsdoc.com/obj/eden-cn/jjjpceh7nulojvhj/base-open-web-api-0.2.0-alpha.11.tgz':
-    resolution: {tarball: https://lf3-static.bytednsdoc.com/obj/eden-cn/jjjpceh7nulojvhj/base-open-web-api-0.2.0-alpha.11.tgz}
+    resolution: {registry: https://registry.npmmirror.com/, tarball: https://lf3-static.bytednsdoc.com/obj/eden-cn/jjjpceh7nulojvhj/base-open-web-api-0.2.0-alpha.11.tgz}
     name: '@base-open/web-api'
     version: 0.2.0-alpha.11
     dev: false
