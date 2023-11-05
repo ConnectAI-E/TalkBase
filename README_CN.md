@@ -43,6 +43,10 @@ TalkBase 是一个开源的 AI 聊天机器人，使用 [TypeChat](https://githu
 🙈 自动描述表格的目的，并为输入数据提供文本建议
 ![快速展示](https://github.com/ConnectAI-E/TalkBase/assets/50035229/10ddf80a-c504-4c42-b516-d70cf9e50268)
 
+
+🙈 完美兼容多维表的字段注释，添加更多字段信息
+![supportDescribe](https://github.com/ConnectAI-E/TalkBase/assets/50035229/6a7e4cf6-e63a-46fd-8ec6-09e0a12b1215)
+
 ## Quick Start
 
 1️⃣ 打开灰度资格扩展的基础链接
