@@ -44,8 +44,7 @@ TalkBase is an open-source AI chatbot that uses [TypeChat](https://github.com/mi
 ![quickShow](https://github.com/ConnectAI-E/TalkBase/assets/50035229/10ddf80a-c504-4c42-b516-d70cf9e50268)
 
 🙈 perfectly compatible with field annotations of multi-dimensional tables, add more field information
-![supportDescribe](https://github.com/ConnectAI-E/TalkBase/assets/50035229/69bcbfb5-5ed0-4a19-8cda-edd0e6eb5f65)
-
+![supportDescribe](https://github.com/ConnectAI-E/TalkBase/assets/50035229/6a7e4cf6-e63a-46fd-8ec6-09e0a12b1215)
 
 
 
